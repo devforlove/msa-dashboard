@@ -22,6 +22,7 @@ buildscript {
 
 allprojects {
 	apply plugin: 'java-library'
+	apply plugin: 'groovy'
 }
 
 subprojects {
@@ -59,5 +60,11 @@ subprojects {
 project(':dashboard-common') {
 	dependencies {
 
+	}
+}
+
+project(':dashboard-member-service') {
+	dependencies {
+		implementation project(path: ':dashboard-common', configuration: 'default')
 	}
 }

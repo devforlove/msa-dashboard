@@ -1,19 +1,49 @@
 plugins {
-    id 'java'
+    id 'com.palantir.docker' version '0.35.0'
 }
 
-group 'org.example'
-version 'unspecified'
+bootJar.enabled = true
+jar.enabled = false
 
-repositories {
-    mavenCentral()
-}
+group = 'com.wook.top.member'
+version = '1.0.0'
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation 'com.mysql:mysql-connector-j'
+
+    // spock
+    testImplementation('org.spockframework:spock-core:2.3-groovy-3.0')
+    testImplementation('org.spockframework:spock-spring:2.3-groovy-3.0')  // Spring과 같이 사용하기 위함
+
+    // 런타임에 클래스 기반 spock mock을 만들기 위함
+    testImplementation('net.bytebuddy:byte-buddy:1.12.19')
+
+    //security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    //test
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-test {
-    useJUnitPlatform()
+bootJar {
+    launchScript()
+    manifest {
+        attributes 'Start-Class': 'com.wook.top.member.MemberServiceApplication'
+    }
+}
+
+docker {
+    println(tasks.bootJar.outputs.files)
+    name project.name + ":" + version
+    dockerfile file("../Dockerfile")
+    files tasks.bootJar.outputs.files
+    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }

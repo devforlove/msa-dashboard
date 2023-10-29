@@ -1,4 +1,4 @@
-package org.example;
+package com.wook.top.common;
 
 public class Main {
 
