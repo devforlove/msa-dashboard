@@ -1,6 +1,6 @@
-package com.wook.top.message;
+package com.wook.top.post;
 
-public class Main {
+public class PostApplicationTest {
 
 	public static void main(String[] args) {
 		System.out.println("Hello world!");
