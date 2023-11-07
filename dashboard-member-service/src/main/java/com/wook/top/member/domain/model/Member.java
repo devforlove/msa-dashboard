@@ -1,6 +1,6 @@
 package com.wook.top.member.domain.model;
 
-import com.wook.top.member.domain.model.converter.MoneyConverter;
+import com.wook.top.member.domain.model.converter.ScoreConverter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Embedded;
@@ -31,11 +31,11 @@ public class Member {
 	private Integer likeCount;
 
 	@Column(name = "member_score")
-	@Convert(converter = MoneyConverter.class)
+	@Convert(converter = ScoreConverter.class)
 	private Score score;
 
 	@Enumerated(value = EnumType.STRING)
-	@Column(name = "member_grade", length =30)
+	@Column(name = "member_grade")
 	private Grade grade;
 
 	private enum Grade {
