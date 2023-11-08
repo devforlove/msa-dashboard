@@ -21,11 +21,16 @@ dependencies {
     testImplementation('org.spockframework:spock-spring:2.3-groovy-3.0')  // Spring과 같이 사용하기 위함
 
     // 런타임에 클래스 기반 spock mock을 만들기 위함
-    testImplementation('net.bytebuddy:byte-buddy:1.12.19')
+    testImplementation('net.bytebuddy:byte-buddy:1.14.2')
 
     //security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     testImplementation 'org.springframework.security:spring-security-test'
+
+    // jwt
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
 
     //test
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'

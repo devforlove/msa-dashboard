@@ -5,15 +5,15 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 @Converter
-public class MoneyConverter implements AttributeConverter<Score, Integer> {
+public class ScoreConverter implements AttributeConverter<Score, Integer> {
 
 	@Override
-	public Integer convertToDatabaseColumn(Score attribute) {
-		return null;
+	public Integer convertToDatabaseColumn(Score score) {
+		return score == null ? null : score.getScorePoint();
 	}
 
 	@Override
-	public Score convertToEntityAttribute(Integer dbData) {
+	public Score convertToEntityAttribute(Integer value) {
 		return null;
 	}
 }
