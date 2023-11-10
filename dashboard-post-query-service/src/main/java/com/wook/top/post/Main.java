@@ -1,4 +1,4 @@
-package com.wook.top.review;
+package com.wook.top.post;
 
 public class Main {
 

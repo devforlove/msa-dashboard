@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+
+</head>
+<body>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/image/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+<!--                    <h1 th:text="${#authentication.principal.username} + '님 안녕하세요!'"></h1>-->
+                    <span class="subheading">Join Us</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container">
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <select id="inputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>...</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Check me out
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+
+    const keyword = document.getElementById("keyword")
+    const keywords = document.getElementById("keywords")
+    const addDaumBtn = document.getElementById("add-daum-btn")
+    const addNaverBtn = document.getElementById("add-naver-btn")
+    const choiceCnt = document.getElementById("choice-cnt")
+
+    let keywordList = []
+    let newsSiteList = []
+
+    let cnt = Number(choiceCnt.innerText)
+
+    document.getElementById("add-btn").onclick = function () {
+
+        if(keyword.value.length == 0){
+            alert("키워드를 입력해주세요")
+            return
+        }
+
+        if(keywordList.includes(keyword.value)) {
+            alert("이미 포함된 키워드입니다.")
+            keyword.value = ""
+            return
+        }
+
+        keywordList.push(keyword.value)
+
+        let new_keywords = keywords.value + keyword.value + "/"
+        keywords.value = new_keywords
+        keyword.value = ""
+    }
+
+    document.getElementById("delete-btn").onclick = function () {
+        keywords.value = ""
+        keywordList = []
+    }
+
+    document.getElementById("add-daum-btn").onclick = function () {
+        addDaumBtn.classList.toggle('active')
+
+        if (addDaumBtn.classList.contains("active")) {
+            cnt += 1
+            choiceCnt.innerText = String(cnt)
+        }
+        else {
+            cnt -= 1
+            choiceCnt.innerText = String(cnt)
+        }
+
+    }
+
+    document.getElementById("add-naver-btn").onclick = function () {
+        addNaverBtn.classList.toggle('active')
+
+        if (addNaverBtn.classList.contains("active")) {
+            cnt += 1
+            choiceCnt.innerText = String(cnt)
+        }
+        else {
+            cnt -= 1
+            choiceCnt.innerText = String(cnt)
+        }
+    }
+
+    async function post() {
+
+        if (addDaumBtn.classList.contains("active")) {
+            newsSiteList.push("daum")
+        }
+
+        if (addNaverBtn.classList.contains("active")) {
+            newsSiteList.push("naver")
+        }
+
+        const res = fetch("/api/v1/keyword", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "newsSites": newsSiteList,
+                "keywords": keywordList
+            }),
+        }).then((response) => response.json())
+            .then((data) => location.href = "/main")
+
+
+    }
+
+
+
+</script>
+
+</body>
+</html>
