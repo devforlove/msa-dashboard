@@ -1,0 +1,24 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        default_batch_fetch_size: 1000
+        format_sql: true
+    hibernate:
+      ddl-auto: validate
+
+feign:
+  url:
+    member: dashboard-member-service:8080/membership
+    banking: castle-banking-service:8080/banking
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 3000
+        loggerLevel: NONE
+      member-client:
+        connectTimeout: 1000
+        readTimeout: 10000
+        loggerLevel: HEADERS
