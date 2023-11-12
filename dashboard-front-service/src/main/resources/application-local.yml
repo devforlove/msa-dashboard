@@ -1,0 +1,16 @@
+server:
+  port: 8072
+
+feign:
+  url:
+    member: localhost:8071/member
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 3000
+        loggerLevel: NONE
+      member-client:
+        connectTimeout: 1000
+        readTimeout: 10000
+        loggerLevel: HEADERS

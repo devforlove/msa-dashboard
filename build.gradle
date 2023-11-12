@@ -68,3 +68,9 @@ project(':dashboard-member-service') {
 		implementation project(path: ':dashboard-common', configuration: 'default')
 	}
 }
+
+project(':dashboard-front-service') {
+	dependencies {
+		implementation project(path: ':dashboard-common', configuration: 'default')
+	}
+}

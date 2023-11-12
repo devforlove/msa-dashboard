@@ -296,4 +296,7 @@ gradle-app.setting
 # axon
 axon-server-se
 
+#querydsl
+generated
+
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,intellij+all,windows,macos,visualstudiocode,eclipse

@@ -1,7 +1,12 @@
 rootProject.name = 'dashboard'
 include 'dashboard-common'
 include 'dashboard-member-service'
-include 'dashboard-post-service'
-include 'dashboard-review-service'
+include 'dashboard-post-command-service'
+include 'dashboard-post-query-service'
+include 'dashboard-post-search-service'
+include 'dashboard-review-command-service'
 include 'dashboard-message-service'
+include 'dashboard-review-query-service'
+include 'dashboard-front-service'
+
 
