@@ -1,4 +1,4 @@
-package com.wook.top.member.config.security;
+package com.wook.top.front.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -16,8 +16,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-	private final JwtAuthorizationFilter jwtAuthorizationFilter;
-
 	@Bean
 	public SecurityFilterChain securityFilterChain(
 			HttpSecurity http
@@ -26,22 +24,12 @@ public class SecurityConfig {
 		return http
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-						.requestMatchers(HttpMethod.POST, "/membership/v1/member", "/membership/v1/login").permitAll()
-						.requestMatchers("/membership/internal/v1/**").permitAll()
-						.requestMatchers(
-								"/swagger-ui/**",
-								"/v3/api-docs/**",
-								"/login"
-						).permitAll()
+						.requestMatchers(HttpMethod.GET, "/", "/join", "/login").permitAll()
+						.requestMatchers(HttpMethod.POST, "/member/nickname").permitAll()
 						.anyRequest().authenticated()
 				)
+				.formLogin(configurer -> configurer.loginPage("/login"))
 				.csrf(AbstractHttpConfigurer::disable)
-				.addFilterAt(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();
-	}
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	}
 }

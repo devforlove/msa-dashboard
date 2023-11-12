@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MainFrontController {
+public class LoginFrontController {
 
-	@RequestMapping("/")
-	public String mainDashboard() {
+	@RequestMapping("/login")
+	public String loginMember() {
 
-		return "main/home";
+		return "main/login";
 	}
 }

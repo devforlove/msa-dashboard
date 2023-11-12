@@ -1,24 +1,22 @@
-package com.wook.top.front.common.http;
+package com.wook.top.member.common.http;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 @Getter
-@Setter
 public class ApiResponse<T> {
 	private final T result;
 	private final int status;
 
 	@Builder
-	public ApiResponse(T result, int status) {
+	public ApiResponse(HttpStatus status, T result) {
 		this.result = result;
-		this.status = status;
+		this.status = status.value();
 	}
 
-	public ApiResponse(int status) {
-		this.status = status;
+	public ApiResponse(HttpStatus status) {
+		this.status = status.value();
 		this.result = null;
 	}
 }

@@ -38,7 +38,7 @@ public class Member {
 	@Column(name = "member_grade")
 	private Grade grade;
 
-	private enum Grade {
+	public enum Grade {
 		JUNIOR, SENIOR, SOPHOMORE
 	}
 }

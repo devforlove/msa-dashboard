@@ -1,4 +1,4 @@
-package com.wook.top.front.member.feign;
+package com.wook.top.front.member.common.feign;
 
 import feign.Request.HttpMethod;
 import feign.RequestInterceptor;

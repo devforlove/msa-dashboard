@@ -1,4 +1,4 @@
-package com.wook.top.front.member.feign;
+package com.wook.top.front.member.common.feign;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

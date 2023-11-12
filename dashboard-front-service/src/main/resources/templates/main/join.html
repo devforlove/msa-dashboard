@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <title></title>
+
+</head>
+<body>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/images/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+<!--                    <h1 th:text="${#authentication.principal.username} + '님 안녕하세요!'"></h1>-->
+                    <span class="subheading">Join Us</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container">
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-10">
+            <label for="inputNickname" class="form-label">Nickname</label>
+            <input type="text" class="form-control" id="inputNickname" placeholder="nickname">
+        </div>
+        <div class="col-2">
+            <label for="duplicatedCheckBtn" class="form-label">중복체크</label>
+            <button class="form-control btn-primary" id="duplicatedCheckBtn">중복체크</button>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+
+    let nickname = document.getElementById("inputNickname")
+
+    document.getElementById("duplicatedCheckBtn").onclick = function () {
+
+        if(nickname.value.length === 0){
+            alert("닉네임을 입력해주세요")
+            return
+        }
+
+        post(nickname.value)
+    }
+
+    async function post(nickname) {
+        await fetch("/member/nickname", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nickname: nickname
+            }),
+        }).then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+            })
+    }
+</script>
+
+</body>
+</html>

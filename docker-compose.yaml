@@ -22,7 +22,18 @@ services:
     networks:
       - dashboard_network
     ports:
-      - "8081:8080"
+      - "8061:8061"
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  dashboard-front-service:
+    image: dashboard-front-service:0.0.1
+    networks:
+      - dashboard_network
+    ports:
+      - "8062:8062"
     depends_on:
       - mysql
     environment:

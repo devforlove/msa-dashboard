@@ -1,4 +1,4 @@
-package com.wook.top.front.member.feign;
+package com.wook.top.front.member.common.feign;
 
 import com.wook.top.common.exception.ErrorCode;
 import com.wook.top.front.common.error.CustomException;
@@ -14,7 +14,7 @@ public class MemberFeignErrorDecoder implements ErrorDecoder {
 	public Exception decode(String methodKey, Response response) {
 		HttpStatus httpStatus = HttpStatus.resolve(response.status());
 
-		if (httpStatus == HttpStatus.NOT_FOUND) {
+		if (httpStatus != HttpStatus.OK) {
 			throw new CustomException(ErrorCode.NOT_FOUND_FROM_REMOTE);
 		}
 

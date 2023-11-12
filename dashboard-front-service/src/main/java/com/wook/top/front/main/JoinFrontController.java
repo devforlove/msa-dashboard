@@ -9,6 +9,6 @@ public class JoinFrontController {
 	@RequestMapping("/join")
 	public String joinMember() {
 
-		return "join";
+		return "main/join";
 	}
 }

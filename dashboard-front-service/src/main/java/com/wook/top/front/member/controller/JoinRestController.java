@@ -1,4 +1,4 @@
-package com.wook.top.front.member;
+package com.wook.top.front.member.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

@@ -1,4 +1,4 @@
-package com.wook.top.member.config.security;
+package com.wook.top.member.common.security;
 
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
