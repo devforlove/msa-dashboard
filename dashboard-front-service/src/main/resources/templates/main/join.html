@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPassword4">
+            <input type="password" class="form-control" id="inputPassword4" autocomplete="off">
         </div>
         <div class="col-10">
             <label for="inputNickname" class="form-label">Nickname</label>
@@ -59,11 +59,10 @@
 
 
 <script>
-
     let nickname = document.getElementById("inputNickname")
+    let nicknameDuplicateCheck = false;
 
     document.getElementById("duplicatedCheckBtn").onclick = function () {
-
         if(nickname.value.length === 0){
             alert("닉네임을 입력해주세요")
             return
@@ -72,18 +71,21 @@
         post(nickname.value)
     }
 
+    document.getElementById("submit").onclick = function () {
+
+    }
+
     async function post(nickname) {
-        await fetch("/member/nickname", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nickname: nickname
-            }),
-        }).then((res) => res.json())
+        fetch("/member/nickname/" + nickname , {
+            method: "GET"
+        }).then((response) => response.json())
             .then((data) => {
-                console.log(data)
+                if (data.result) {
+                    nicknameDuplicateCheck = true
+                    alert("사용 가능")
+                } else {
+                    alert("사용 불가능")
+                }
             })
     }
 </script>
