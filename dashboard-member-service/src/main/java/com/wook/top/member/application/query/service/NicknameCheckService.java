@@ -1,8 +1,8 @@
-package com.wook.top.member.application.service.query;
+package com.wook.top.member.application.query.service;
 
 import com.wook.top.common.annotation.UseCase;
-import com.wook.top.member.application.port.in.NicknameCheckUseCase;
-import com.wook.top.member.application.port.out.NicknameCheckPort;
+import com.wook.top.member.application.query.port.in.NicknameCheckUseCase;
+import com.wook.top.member.application.query.port.out.NicknameCheckPort;
 import lombok.RequiredArgsConstructor;
 
 @UseCase

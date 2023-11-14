@@ -1,4 +1,4 @@
-package com.wook.top.member.application.port.in;
+package com.wook.top.member.application.query.port.in;
 
 public interface NicknameCheckUseCase {
 

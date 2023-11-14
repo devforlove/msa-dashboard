@@ -1,7 +1,7 @@
-package com.wook.top.member.adapter.in.query;
+package com.wook.top.member.adapter.query.in;
 
 import com.wook.top.common.annotation.WebAdapter;
-import com.wook.top.member.application.port.in.NicknameCheckUseCase;
+import com.wook.top.member.application.query.port.in.NicknameCheckUseCase;
 import com.wook.top.member.common.http.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
