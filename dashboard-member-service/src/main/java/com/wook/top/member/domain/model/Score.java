@@ -4,6 +4,5 @@ import lombok.Getter;
 
 @Getter
 public class Score {
-
 	Integer scorePoint;
 }

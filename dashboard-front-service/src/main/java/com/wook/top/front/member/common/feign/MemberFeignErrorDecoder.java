@@ -12,12 +12,6 @@ public class MemberFeignErrorDecoder implements ErrorDecoder {
 
 	@Override
 	public Exception decode(String methodKey, Response response) {
-		HttpStatus httpStatus = HttpStatus.resolve(response.status());
-
-		if (httpStatus != HttpStatus.OK) {
-			throw new CustomException(ErrorCode.NOT_FOUND_FROM_REMOTE);
-		}
-
 		return errorDecoder.decode(methodKey, response);
 	}
 }

@@ -1,4 +1,4 @@
-package com.wook.top.member.adapter.out.persistence;
+package com.wook.top.member.adapter.query.out.persistence;
 
 import com.wook.top.common.annotation.PersistenceAdapter;
 import com.wook.top.member.application.query.port.out.NicknameCheckPort;

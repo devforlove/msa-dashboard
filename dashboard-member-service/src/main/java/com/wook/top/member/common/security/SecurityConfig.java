@@ -27,6 +27,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 						.requestMatchers(HttpMethod.GET, "/member/v1/nickname/*").permitAll()
+						.requestMatchers(HttpMethod.POST, "/member/v1/member").permitAll()
 						.requestMatchers(
 								"/swagger-ui/**",
 								"/v3/api-docs/**",

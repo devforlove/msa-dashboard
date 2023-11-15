@@ -26,6 +26,7 @@ public class SecurityConfig {
 						.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 						.requestMatchers(HttpMethod.GET, "/", "/join", "/login").permitAll()
 						.requestMatchers(HttpMethod.GET, "/member/nickname/*").permitAll()
+						.requestMatchers(HttpMethod.POST, "/member").permitAll()
 						.anyRequest().authenticated()
 				)
 				.formLogin(configurer -> configurer.loginPage("/login"))
