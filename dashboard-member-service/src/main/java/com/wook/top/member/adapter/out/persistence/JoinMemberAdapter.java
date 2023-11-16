@@ -1,9 +1,9 @@
 package com.wook.top.member.adapter.out.persistence;
 
 import com.wook.top.common.annotation.PersistenceAdapter;
-import com.wook.top.member.application.command.port.out.JoinMemberPort;
-import com.wook.top.member.domain.model.Member;
-import com.wook.top.member.domain.repository.MemberRepository;
+import com.wook.top.member.command.application.port.out.JoinMemberPort;
+import com.wook.top.member.command.domain.model.Member;
+import com.wook.top.member.command.domain.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @PersistenceAdapter

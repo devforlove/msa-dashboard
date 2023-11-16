@@ -1,9 +1,9 @@
 package com.wook.top.member.adapter.in;
 
 import com.wook.top.common.annotation.WebAdapter;
-import com.wook.top.member.application.command.port.in.JoinMemberInfo;
-import com.wook.top.member.application.command.port.in.JoinMemberUseCase;
-import com.wook.top.member.application.command.port.in.JoinMemberCommand;
+import com.wook.top.member.command.application.port.in.JoinMemberInfo;
+import com.wook.top.member.command.application.port.in.JoinMemberUseCase;
+import com.wook.top.member.command.application.port.in.JoinMemberCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
