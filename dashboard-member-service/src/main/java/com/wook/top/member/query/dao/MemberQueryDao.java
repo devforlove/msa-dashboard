@@ -1,6 +1,7 @@
 package com.wook.top.member.query.dao;
 
-import static com.wook.top.member.domain.model.QMember.*;
+
+import static com.wook.top.member.command.domain.model.QMember.member;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

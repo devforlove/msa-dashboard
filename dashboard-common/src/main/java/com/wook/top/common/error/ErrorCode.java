@@ -1,4 +1,4 @@
-package com.wook.top.common.exception;
+package com.wook.top.common.error;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.CONFLICT;
@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 public enum ErrorCode {
-
+	INVALID_INPUT_VALUE(BAD_REQUEST, 400000, "invalid input value"),
 	BAD_ARGUMENT(BAD_REQUEST, 400001, "bad argument"),
 	INVALID_PARAMETER(BAD_REQUEST, 400002, "invalid parameter"),
 	USER_NOT_VALID(BAD_REQUEST, 400003, "user not valid"),
@@ -42,12 +42,12 @@ public enum ErrorCode {
 	INTERNAL_SERVER_ERR(INTERNAL_SERVER_ERROR, 500001, "internal server error");
 
 	private final HttpStatus httpStatus;
-	private final int  status;
+	private final int  code;
 	private final String message;
 
-	ErrorCode(HttpStatus httpStatus, int status, String message) {
+	ErrorCode(HttpStatus httpStatus, int code, String message) {
 		this.httpStatus = httpStatus;
-		this.status = status;
+		this.code = code;
 		this.message = message;
 	}
 }

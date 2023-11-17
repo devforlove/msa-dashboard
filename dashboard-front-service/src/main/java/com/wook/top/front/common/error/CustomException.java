@@ -1,6 +1,6 @@
 package com.wook.top.front.common.error;
 
-import com.wook.top.common.exception.ErrorCode;
+import com.wook.top.common.error.ErrorCode;
 import lombok.Getter;
 
 @Getter
