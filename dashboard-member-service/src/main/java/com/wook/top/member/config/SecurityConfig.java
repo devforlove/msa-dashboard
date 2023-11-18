@@ -2,10 +2,9 @@ package com.wook.top.member.config;
 
 import com.wook.top.member.common.security.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -24,20 +23,24 @@ public class SecurityConfig {
 			HttpSecurity http
 	) throws Exception {
 
-		return http
-				.authorizeHttpRequests(auth -> auth
-						.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-						.requestMatchers(HttpMethod.GET, "/member/v1/nickname/*").permitAll()
-						.requestMatchers(HttpMethod.POST, "/member/v1/member").permitAll()
-						.requestMatchers(
-								"/swagger-ui/**",
-								"/v3/api-docs/**",
-								"/login"
-						).permitAll()
+		return http.authorizeHttpRequests(auth -> auth
+						.requestMatchers("/member/**").permitAll()
+						.requestMatchers("/member/me").hasRole("MEMBER")
 						.anyRequest().authenticated()
 				)
 				.csrf(AbstractHttpConfigurer::disable)
 				.addFilterAt(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
+				.build();
+	}
+
+	@Bean
+	@Order(0)
+	public SecurityFilterChain resources(HttpSecurity http) throws Exception {
+		return http.authorizeHttpRequests(auth -> auth
+				.requestMatchers(
+						"/swagger-ui/**",
+						"/v3/api-docs/**"
+				).permitAll())
 				.build();
 	}
 

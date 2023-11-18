@@ -13,7 +13,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 public enum ErrorCode {
 	INVALID_INPUT_VALUE(BAD_REQUEST, 400000, "invalid input value"),
-	NICKNAME_DUPLICATED(BAD_REQUEST, 400001, "nickname duplicated");
+	NICKNAME_DUPLICATED(BAD_REQUEST, 400001, "nickname duplicated"),
+	EMAIL_DUPLICATED(BAD_REQUEST, 400002, "email duplicated");
 
 	private final HttpStatus httpStatus;
 	private final int  code;

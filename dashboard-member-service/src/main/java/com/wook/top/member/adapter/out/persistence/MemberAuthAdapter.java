@@ -1,18 +1,23 @@
 package com.wook.top.member.adapter.out.persistence;
 
 import com.wook.top.common.annotation.PersistenceAdapter;
-import com.wook.top.member.command.application.port.out.JoinMemberPort;
+import com.wook.top.member.command.application.port.out.MemberAuthPort;
 import com.wook.top.member.command.domain.model.Member;
 import com.wook.top.member.command.domain.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
-public class JoinMemberAdapter implements JoinMemberPort {
+public class MemberAuthAdapter implements MemberAuthPort {
 	private final MemberRepository memberRepository;
 
 	@Override
-	public Member joinMember(Member member) {
-		return memberRepository.save(member);
+	public void joinMember(Member member) {
+		memberRepository.save(member);
+	}
+
+	@Override
+	public boolean existByEmail(String email) {
+		return memberRepository.existsByMemberInfoEmail(email);
 	}
 }

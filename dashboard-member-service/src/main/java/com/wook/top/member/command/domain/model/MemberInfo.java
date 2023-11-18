@@ -16,8 +16,8 @@ public class MemberInfo {
 	@Column(name = "member_email", length = 200)
 	private String email;
 
-	public MemberInfo(String name, String email) {
-		this.name = name;
+	public MemberInfo(String email, String nickname) {
 		this.email = email;
+		this.name = nickname;
 	}
 }

@@ -1,6 +1,5 @@
 package com.wook.top.member.common.error;
 
-import com.wook.top.common.error.ErrorCode;
 import com.wook.top.member.common.error.ErrorResponse.ValidationError;
 import com.wook.top.member.common.error.exception.BusinessException;
 import java.util.List;

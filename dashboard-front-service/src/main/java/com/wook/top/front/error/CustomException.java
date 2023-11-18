@@ -1,4 +1,4 @@
-package com.wook.top.front.common.error;
+package com.wook.top.front.error;
 
 import com.wook.top.common.error.ErrorCode;
 import lombok.Getter;

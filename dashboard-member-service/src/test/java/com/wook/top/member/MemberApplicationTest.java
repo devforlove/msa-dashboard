@@ -1,8 +1,12 @@
 package com.wook.top.member;
 
-public class MemberApplicationTest {
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-	public static void main(String[] args) {
-		System.out.println("Hello world!");
+@SpringBootTest
+class MemberApplicationTest {
+
+	@Test
+	void contextLoads() {
 	}
 }
