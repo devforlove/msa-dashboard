@@ -36,12 +36,12 @@
 <div class="container">
     <form class="row g-3">
         <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail">
         </div>
         <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPassword4">
+            <label for="inputPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword" autocomplete="off">
         </div>
         <div class="col-10">
             <label for="inputNickname" class="form-label">Nickname</label>
@@ -49,21 +49,22 @@
         </div>
         <div class="col-2">
             <label for="duplicatedCheckBtn" class="form-label">중복체크</label>
-            <button class="form-control btn-primary" id="duplicatedCheckBtn">중복체크</button>
+            <button class="form-control btn-primary" id="duplicatedCheckBtn" type="button">중복체크</button>
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="button" class="btn btn-primary" id="signInBtn">Sign in</button>
         </div>
     </form>
 </div>
 
 
 <script>
-
     let nickname = document.getElementById("inputNickname")
+    let email = document.getElementById("inputEmail")
+    let password = document.getElementById("inputPassword")
+    let nicknameDuplicateCheck = false;
 
     document.getElementById("duplicatedCheckBtn").onclick = function () {
-
         if(nickname.value.length === 0){
             alert("닉네임을 입력해주세요")
             return
@@ -72,19 +73,66 @@
         post(nickname.value)
     }
 
+    document.getElementById("signInBtn").onclick = function () {
+        if(email.value.length === 0){
+            alert("이메일을 입력해주세요")
+            return
+        }
+
+        if(password.value.length === 0){
+            alert("패스워드를 입력해주세요")
+            return
+        }
+
+        if(nickname.value.length === 0){
+            alert("닉네임을 입력해주세요")
+            return
+        }
+
+        if (nicknameDuplicateCheck === false) {
+            alert("닉네임 중복 체크를 해주세요")
+            return
+        }
+
+        join(email.value, password.value, nickname.value)
+    }
+
+    document.getElementById("inputNickname").onchange = function () {
+        nicknameDuplicateCheck = false
+    }
+
     async function post(nickname) {
-        await fetch("/member/nickname", {
+        fetch("/member/nickname/" + nickname , {
+            method: "GET"
+        }).then((response) => {
+            if (response.ok === true) {
+                nicknameDuplicateCheck = true
+                alert("사용 가능")
+            } else {
+                alert("사용 불가능")
+            }
+        })
+    }
+
+    async function join(email, password, nickname) {
+        fetch("/member", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+                "content-type": "application/json"
             },
             body: JSON.stringify({
+                email: email,
+                password: password,
                 nickname: nickname
-            }),
-        }).then((res) => res.json())
-            .then((data) => {
-                console.log(data)
             })
+        }).then((response) => {
+                if (response.ok === true) {
+                    alert("계정이 생성되었습니다.")
+                } else {
+                    alert("계정 생성에 실패하였습니다.")
+                }
+            }
+        )
     }
 </script>
 

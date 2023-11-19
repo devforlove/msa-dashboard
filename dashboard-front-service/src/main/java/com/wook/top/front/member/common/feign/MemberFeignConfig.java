@@ -11,8 +11,8 @@ public class MemberFeignConfig {
 		return new MemberFeignInterceptor();
 	}
 
-	@Bean
-	public MemberFeignErrorDecoder memberDemoFeignErrorDecoder() {
-		return new MemberFeignErrorDecoder();
-	}
+//	@Bean
+//	public MemberFeignErrorDecoder memberDemoFeignErrorDecoder() {
+//		return new MemberFeignErrorDecoder();
+//	}
 }

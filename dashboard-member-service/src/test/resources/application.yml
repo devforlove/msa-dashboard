@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:dashboard;MODE=MYSQL;NON_KEYWORDS=USER,KEY
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show_sql: true
+        format_sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+
+  sql:
+    init:
+      schema-locations: classpath:sql/ddl/*
+      data-locations: classpath:sql/init/*
+      mode: always
+
+jwt:
+  jwtSecretKey: 2ifamoxz94kcpwigfi9spcadcfawasadff324rfsdfsdfsfsd
+  expirationTime: 3600000

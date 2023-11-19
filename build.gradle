@@ -21,16 +21,14 @@ buildscript {
 }
 
 allprojects {
-	apply plugin: 'java-library'
-	apply plugin: 'groovy'
+	group 'com.wook.top'
+	version '1.0'
 }
 
 subprojects {
-	group 'com.wook.top'
-	version '1.0'
-
 	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java-library'
 
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
@@ -41,6 +39,7 @@ subprojects {
 
 	repositories {
 		mavenCentral()
+		maven { url 'https://jitpack.io' }
 	}
 
 	dependencyManagement {
@@ -50,10 +49,18 @@ subprojects {
 	}
 
 	dependencies {
-		compileOnly "org.projectlombok:lombok:${lombokVersion}"
-		annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
+		testCompileOnly 'org.projectlombok:lombok'
+		testAnnotationProcessor 'org.projectlombok:lombok'
+
 		implementation 'org.springframework.boot:spring-boot-starter-aop'
-		implementation "org.apache.commons:commons-lang3:${commonLangVersion}"
+
+		implementation 'org.springframework.boot:spring-boot-starter-test'
+
+//		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//		}
 	}
 }
 
