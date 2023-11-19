@@ -1,24 +1,36 @@
-package com.wook.top.member.common.security;
+package com.wook.top.member.config.security;
+
 
 import java.util.Collection;
+import java.util.List;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public record MemberDto(String memberId, String email) implements UserDetails {
+@Getter
+@RequiredArgsConstructor
+public class SecurityUser implements UserDetails {
+	private final long memberId;
+	private final String email;
+	private final String password;
+	private final String nickname;
+
+	private final List<GrantedAuthority> authorities;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		return authorities;
 	}
 
 	@Override
 	public String getPassword() {
-		return null;
+		return password;
 	}
 
 	@Override
 	public String getUsername() {
-		return this.email;
+		return nickname;
 	}
 
 	@Override

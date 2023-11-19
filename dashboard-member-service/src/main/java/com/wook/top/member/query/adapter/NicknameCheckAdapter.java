@@ -8,10 +8,10 @@ import lombok.RequiredArgsConstructor;
 @PersistenceAdapter
 @RequiredArgsConstructor
 public class NicknameCheckAdapter implements NicknameCheckPort {
-	private final MemberQueryDao memberQuerydslRepository;
+	private final MemberQueryDao memberQueryDao;
 
 	@Override
 	public boolean checkNicknameDuplication(String nickname) {
-		return !memberQuerydslRepository.existNickname(nickname);
+		return !memberQueryDao.existNickname(nickname);
 	}
 }

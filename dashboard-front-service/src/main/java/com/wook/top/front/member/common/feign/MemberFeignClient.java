@@ -3,6 +3,7 @@ package com.wook.top.front.member.common.feign;
 import com.wook.top.front.member.common.feign.request.CheckNicknameResponse;
 import com.wook.top.front.member.common.feign.request.JoinFeignRequest;
 import com.wook.top.front.member.infra.JoinRemoteResponse;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

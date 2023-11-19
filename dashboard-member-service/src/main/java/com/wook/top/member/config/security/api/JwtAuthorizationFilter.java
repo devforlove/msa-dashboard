@@ -1,5 +1,6 @@
-package com.wook.top.member.common.security;
+package com.wook.top.member.config.security.api;
 
+import com.wook.top.member.config.security.SecurityUser;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,10 +35,10 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 			}
 
 			//토큰에서 유저 정보 획득
-			MemberDto memberDto = jwtTokenProvider.getMemberDto(token);
-			if (memberDto != null) {
+			SecurityUser securityUser = jwtTokenProvider.getSecurityUser(token);
+			if (securityUser != null) {
 				Authentication authentication = new UsernamePasswordAuthenticationToken(
-						memberDto,
+						securityUser,
 						null,
 						null
 				);

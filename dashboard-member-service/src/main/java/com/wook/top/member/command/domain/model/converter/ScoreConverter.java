@@ -14,6 +14,6 @@ public class ScoreConverter implements AttributeConverter<Score, Integer> {
 
 	@Override
 	public Score convertToEntityAttribute(Integer value) {
-		return null;
+		return new Score(value);
 	}
 }

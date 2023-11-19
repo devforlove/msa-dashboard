@@ -5,6 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class Score {
-	private final Integer scorePoint;
+public class LikeCount {
+	private final Integer likeCount;
 }

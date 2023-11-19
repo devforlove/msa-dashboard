@@ -1,4 +1,4 @@
-package com.wook.top.member.adapter.out.persistence;
+package com.wook.top.member.command.adapter.out.persistence;
 
 import com.wook.top.common.annotation.PersistenceAdapter;
 import com.wook.top.member.command.application.port.out.UserRolePort;
@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
-public class UserUserRoleAdapter implements UserRolePort {
+public class UserRoleAdapter implements UserRolePort {
 	private final UserRoleRepository userRoleRepository;
 
 	@Override

@@ -1,4 +1,4 @@
-package com.wook.top.member.adapter.out.persistence;
+package com.wook.top.member.command.adapter.out.persistence;
 
 import com.wook.top.common.annotation.PersistenceAdapter;
 import com.wook.top.member.command.application.port.out.MemberAuthPort;
@@ -19,5 +19,10 @@ public class MemberAuthAdapter implements MemberAuthPort {
 	@Override
 	public boolean existByEmail(String email) {
 		return memberRepository.existsByMemberInfoEmail(email);
+	}
+
+	@Override
+	public boolean existByNickname(String nickname) {
+		return memberRepository.existsByMemberInfoName(nickname);
 	}
 }

@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-@AutoConfigureRestDocs
 public class BaseControllerTest {
 
 	@Autowired

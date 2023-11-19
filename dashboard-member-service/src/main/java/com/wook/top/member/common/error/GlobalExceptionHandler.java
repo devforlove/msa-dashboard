@@ -16,14 +16,14 @@ public class GlobalExceptionHandler {
 	protected ResponseEntity<ErrorResponse> handleBusinessException(BusinessException e) {
 		ErrorCode errorCode = e.getErrorCode();
 		ErrorResponse response = new ErrorResponse(errorCode.getCode(), e.getMessage());
-		return new ResponseEntity<>(response, errorCode.getHttpStatus());
+		return new ResponseEntity<>(response, errorCode.getStatus());
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ErrorResponse> handleValidException(MethodArgumentNotValidException e) {
 		ErrorCode errorCode = ErrorCode.INVALID_INPUT_VALUE;
 		return ResponseEntity
-				.status(errorCode.getHttpStatus())
+				.status(errorCode.getStatus())
 				.body(makeErrorResponse(e, errorCode));
 	}
 

@@ -11,6 +11,7 @@ import com.wook.top.member.command.application.port.out.UserRolePort;
 import com.wook.top.member.command.domain.model.Role;
 import com.wook.top.member.command.domain.model.UserRole;
 import com.wook.top.member.common.error.exception.EmailDuplicatedException;
+import com.wook.top.member.common.error.exception.NicknameDuplicatedException;
 import com.wook.top.member.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,11 +21,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("JoinMemberService의")
+@DisplayName("MemberAuthService의")
 class MemberAuthServiceTest {
-
 	@InjectMocks
 	private MemberAuthService sut;
 
@@ -33,6 +34,9 @@ class MemberAuthServiceTest {
 
 	@Mock
 	UserRolePort userRolePort;
+
+	@Mock
+	PasswordEncoder passwordEncoder;
 
 	@Nested
 	@DisplayName("joinMember 메서드는")
@@ -56,6 +60,17 @@ class MemberAuthServiceTest {
 			//then
 			assertThat(memberInfo.email()).isEqualTo(command.email());
 			assertThat(memberInfo.nickname()).isEqualTo(command.nickname());
+		}
+
+		@Test
+		@DisplayName("중복된 닉네임이 있다면 NicknameDuplicatedException을 발생시킨다.")
+		void withExistNickname_ItThrowEmailDuplicatedException() {
+			//given
+			given(joinMemberPort.existByNickname(command.nickname())).willReturn(true);
+
+			//when & then
+			assertThatThrownBy(() -> sut.joinMember(command))
+					.isInstanceOf(NicknameDuplicatedException.class);
 		}
 
 		@Test

@@ -1,4 +1,4 @@
-package com.wook.top.member;
+package com.wook.top;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

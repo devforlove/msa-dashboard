@@ -1,4 +1,4 @@
-package com.wook.top.member.adapter.in;
+package com.wook.top.member.command.adapter.in;
 
 import com.wook.top.common.annotation.WebAdapter;
 import com.wook.top.member.command.application.port.in.JoinMemberInfo;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 @WebAdapter
 @RequestMapping("/member/v1")
 @RequiredArgsConstructor
-public class JoinMemberController {
-	private final MemberAuthUseCase joinMemberUseCase;
+public class MemberAuthController {
+	private final MemberAuthUseCase memberAuthUseCase;
 
 	@PostMapping("/member")
 	public ResponseEntity<JoinMemberInfo> joinMember(
@@ -28,6 +28,6 @@ public class JoinMemberController {
 				request.password(),
 				request.nickname()
 		);
-		return new ResponseEntity<>(joinMemberUseCase.joinMember(command), HttpStatus.OK);
+		return new ResponseEntity<>(memberAuthUseCase.joinMember(command), HttpStatus.OK);
 	}
 }

@@ -1,11 +1,16 @@
 package com.wook.top.member.common.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import java.io.Serializable;
 import java.util.List;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.validation.FieldError;
 
 @Builder
+@Getter
+@NoArgsConstructor
 public class ErrorResponse {
 	private int code;
 	private String message;

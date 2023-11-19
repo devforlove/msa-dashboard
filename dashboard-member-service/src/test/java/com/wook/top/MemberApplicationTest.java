@@ -1,4 +1,4 @@
-package com.wook.top.member;
+package com.wook.top;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,8 +1,5 @@
 package com.wook.top.member.query.adapter;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import com.wook.top.member.command.domain.model.Member;
 import com.wook.top.member.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

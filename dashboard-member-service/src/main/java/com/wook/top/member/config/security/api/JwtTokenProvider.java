@@ -1,5 +1,7 @@
-package com.wook.top.member.common.security;
+package com.wook.top.member.config.security.api;
 
+import com.wook.top.member.command.domain.model.UserRole;
+import com.wook.top.member.config.security.SecurityUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtBuilder;
@@ -11,9 +13,11 @@ import jakarta.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Set;
 import javax.crypto.spec.SecretKeySpec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -22,6 +26,7 @@ public class JwtTokenProvider {
 	private final long expirationTime;
 	private final Key key;
 	private static final String CLAIM_KEY = "USER_INFO";
+
 	public JwtTokenProvider(@Value("${jwt.jwtSecretKey}") String jwtSecretKey,
 				@Value("${jwt.expirationTime}") long expirationTime) {
 		this.expirationTime = expirationTime;
@@ -30,11 +35,11 @@ public class JwtTokenProvider {
 		this.key = new SecretKeySpec(apiKeySecretBytes, SignatureAlgorithm.HS256.getJcaName());
 	}
 
-	public String generateJwtToken(MemberDto memberDto) {
+	public String generateJwtToken(SecurityUser securityUser) {
 		final Date expireDate = new Date(System.currentTimeMillis() + this.expirationTime);
 		JwtBuilder builder = Jwts.builder()
-				.claim(CLAIM_KEY, memberDto)
-				.setSubject(String.valueOf(memberDto.memberId()))
+				.claim(CLAIM_KEY, securityUser)
+				.setSubject(String.valueOf(securityUser.getMemberId()))
 				.signWith(key, SignatureAlgorithm.HS256)
 				.setExpiration(expireDate);
 		return builder.compact();
@@ -56,9 +61,24 @@ public class JwtTokenProvider {
 		return false;
 	}
 
-	public MemberDto getMemberDto(String token) {
+	public SecurityUser getSecurityUser(String token) {
 		Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
+
+		@SuppressWarnings("unchecked")
 		HashMap<String, Object> memberMap = claims.get(CLAIM_KEY, HashMap.class);
-		return new MemberDto((String) memberMap.get("memberId"), (String) memberMap.get("email"));
+
+		@SuppressWarnings("unchecked")
+		Set<UserRole> roles = (Set<UserRole>) memberMap.get("roles");
+
+		return new SecurityUser(
+				(long) memberMap.get("memberId"),
+				(String) memberMap.get("email"),
+				(String) memberMap.get("password"),
+				(String) memberMap.get("nickname"),
+				AuthorityUtils.createAuthorityList(
+						roles.stream().map(r -> String.format("ROLE_%s", r.getName().toString()))
+								.toArray(String[]::new)
+				)
+		);
 	}
 }
