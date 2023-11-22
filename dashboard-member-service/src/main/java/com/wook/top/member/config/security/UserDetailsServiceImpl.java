@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 				member.getMemberId(),
 				member.getMemberInfo().getEmail(),
 				member.getPasswordInfo().getPassword(),
-				member.getMemberInfo().getName(),
+				member.getMemberInfo().getNickname(),
 				AuthorityUtils.createAuthorityList(
 						member.getRoles().stream().map(r -> String.format("ROLE_%s", r.getName().toString()))
 								.toArray(String[]::new)

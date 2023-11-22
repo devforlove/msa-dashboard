@@ -1,4 +1,4 @@
-package com.wook.top.member.command.adapter.in;
+package com.wook.top.member.command.adapter.in.web;
 
 import com.wook.top.common.annotation.WebAdapter;
 import com.wook.top.member.command.application.port.in.JoinMemberInfo;

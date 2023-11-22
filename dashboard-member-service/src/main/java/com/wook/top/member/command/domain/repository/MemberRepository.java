@@ -7,6 +7,6 @@ import org.springframework.data.repository.Repository;
 public interface MemberRepository extends Repository<Member, Long> {
 	Optional<Member> findByMemberInfoEmail(String email);
 	boolean existsByMemberInfoEmail(String email);
-	boolean existsByMemberInfoName(String nickname);
+	boolean existsByMemberInfoNickname(String nickname);
 	void save(Member member);
 }

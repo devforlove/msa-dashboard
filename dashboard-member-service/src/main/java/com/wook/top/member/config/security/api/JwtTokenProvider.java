@@ -1,6 +1,5 @@
 package com.wook.top.member.config.security.api;
 
-import com.wook.top.member.command.domain.model.UserRole;
 import com.wook.top.member.config.security.SecurityUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -13,11 +12,11 @@ import jakarta.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.List;
 import javax.crypto.spec.SecretKeySpec;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -68,17 +67,14 @@ public class JwtTokenProvider {
 		HashMap<String, Object> memberMap = claims.get(CLAIM_KEY, HashMap.class);
 
 		@SuppressWarnings("unchecked")
-		Set<UserRole> roles = (Set<UserRole>) memberMap.get("roles");
+		List<GrantedAuthority> authorities = (List<GrantedAuthority>) memberMap.get("authorities");
 
 		return new SecurityUser(
-				(long) memberMap.get("memberId"),
+				((Integer) memberMap.get("memberId")).longValue(),
 				(String) memberMap.get("email"),
 				(String) memberMap.get("password"),
 				(String) memberMap.get("nickname"),
-				AuthorityUtils.createAuthorityList(
-						roles.stream().map(r -> String.format("ROLE_%s", r.getName().toString()))
-								.toArray(String[]::new)
-				)
+				authorities
 		);
 	}
 }

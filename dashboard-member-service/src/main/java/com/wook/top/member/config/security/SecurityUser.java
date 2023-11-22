@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Getter
 @RequiredArgsConstructor
 public class SecurityUser implements UserDetails {
-	private final long memberId;
+	private final Long memberId;
 	private final String email;
 	private final String password;
 	private final String nickname;

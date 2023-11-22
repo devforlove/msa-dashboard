@@ -35,12 +35,13 @@ public class MemberAuthService implements MemberAuthUseCase {
 				command.email(),
 				passwordEncoder.encode(command.password()),
 				command.nickname(),
+				null,
 				new HashSet<>(List.of(role))
 		);
 
 		memberAuthPort.joinMember(member);
 
-		return new JoinMemberInfo(member.getMemberInfo().getEmail(), member.getMemberInfo().getName());
+		return new JoinMemberInfo(member.getMemberInfo().getEmail(), member.getMemberInfo().getNickname());
 	}
 
 	private void verifyUniqueNickname(String nickname) {

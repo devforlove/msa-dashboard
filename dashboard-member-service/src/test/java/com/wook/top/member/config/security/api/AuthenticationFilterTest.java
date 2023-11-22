@@ -57,6 +57,7 @@ class AuthenticationFilterTest extends BaseControllerTest {
 				email,
 				passwordEncoder.encode(password),
 				nickname,
+				null,
 				Set.of(role));
 		memberRepository.save(member);
 	}
