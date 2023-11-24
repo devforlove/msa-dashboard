@@ -33,6 +33,7 @@ public class SecurityConfig {
 				.csrf(AbstractHttpConfigurer::disable)
 				.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
 				.addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
+				.sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.build();
 	}
 

@@ -1,6 +1,8 @@
-package fixture;
+package com.wook.top.testFixture;
 
 import com.wook.top.member.command.domain.model.Member;
+import com.wook.top.member.command.domain.model.UserRole;
+import java.util.Set;
 
 public enum MemberFixture {
 
@@ -16,7 +18,7 @@ public enum MemberFixture {
 		this.nickname = nickname;
 	}
 
-	public Member getMember() {
-		return null;
+	public Member getMember(String email, String password, String nickname, Set<UserRole> roles) {
+		return Member.createMember(email, password, nickname, null, roles);
 	}
 }

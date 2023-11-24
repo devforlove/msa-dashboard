@@ -12,6 +12,7 @@ import com.wook.top.member.command.domain.repository.UserRoleRepository;
 import com.wook.top.member.config.security.AuthenticationRequest;
 import com.wook.top.member.config.security.SecurityUser;
 import com.wook.top.member.support.presentation.BaseControllerTest;
+import com.wook.top.testFixture.MemberFixture;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -53,12 +54,6 @@ class AuthenticationFilterTest extends BaseControllerTest {
 
 	void generateMember(String email, String password, String nickname) {
 		UserRole role = roleRepository.findByName(Role.MEMBER);
-		Member member = Member.createMember(
-				email,
-				passwordEncoder.encode(password),
-				nickname,
-				null,
-				Set.of(role));
-		memberRepository.save(member);
+		memberRepository.save(MemberFixture.NORMAL_MEMBER.getMember(email, passwordEncoder.encode(password), nickname, Set.of(role)));
 	}
 }
