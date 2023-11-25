@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import javax.crypto.spec.SecretKeySpec;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,9 +22,10 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+@NoArgsConstructor
 public class JwtTokenProvider {
-	private final long expirationTime;
-	private final Key key;
+	private long expirationTime;
+	private Key key;
 	private static final String CLAIM_KEY = "USER_INFO";
 
 	public JwtTokenProvider(@Value("${jwt.jwtSecretKey}") String jwtSecretKey,
