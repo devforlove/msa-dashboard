@@ -1,5 +1,6 @@
 package com.wook.top.member.config.security.api;
 
+import com.wook.top.member.command.domain.model.Role;
 import com.wook.top.member.config.security.SecurityUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -11,21 +12,22 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
+import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.crypto.spec.SecretKeySpec;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-@NoArgsConstructor
 public class JwtTokenProvider {
-	private long expirationTime;
-	private Key key;
+	private final long expirationTime;
+	private final Key key;
 	private static final String CLAIM_KEY = "USER_INFO";
 
 	public JwtTokenProvider(@Value("${jwt.jwtSecretKey}") String jwtSecretKey,
@@ -58,6 +60,8 @@ public class JwtTokenProvider {
 			log.info("지원하지 않는 JWT 토큰입니다.");
 		}catch(IllegalArgumentException e){
 			log.info("JWT 토큰이 잘못되었습니다.");
+		} catch (Exception e) {
+			log.info("토큰이 유효하지 않습니다.");
 		}
 		return false;
 	}
@@ -69,14 +73,14 @@ public class JwtTokenProvider {
 		HashMap<String, Object> memberMap = claims.get(CLAIM_KEY, HashMap.class);
 
 		@SuppressWarnings("unchecked")
-		List<GrantedAuthority> authorities = (List<GrantedAuthority>) memberMap.get("authorities");
+		List<String> roles = (List<String>) memberMap.get("roles");
 
 		return new SecurityUser(
 				((Integer) memberMap.get("memberId")).longValue(),
 				(String) memberMap.get("email"),
 				(String) memberMap.get("password"),
 				(String) memberMap.get("nickname"),
-				authorities
+				roles.stream().map(Role::valueOf).collect(Collectors.toSet())
 		);
 	}
 }

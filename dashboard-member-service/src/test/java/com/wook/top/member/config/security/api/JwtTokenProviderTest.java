@@ -1,33 +1,71 @@
 package com.wook.top.member.config.security.api;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import com.wook.top.member.config.security.SecurityUser;
 import com.wook.top.testFixture.SecurityUserFixture;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("JwtTokenProvider 테스트")
 class JwtTokenProviderTest {
-
-	@InjectMocks
 	JwtTokenProvider jwtTokenProvider;
-
 	SecurityUser securityUser;
+
+	public static final String jwtSecretKey = "zv3Xa#Viv92Sskwksdi3!2amvzovmosa90gsmkfoDDcCw3@#%f@";
+	public static final long expireTime = 3600000;
 
 	@BeforeEach
 	void setup() {
 		securityUser = SecurityUserFixture.MEMBER.getSecurityUser();
+		jwtTokenProvider = new JwtTokenProvider(jwtSecretKey, expireTime);
 	}
 
+	@DisplayName("토큰 생성하고 SecurityUser 반환")
 	@Test
 	void withSecurityUser_GenerateToken() {
-		jwtTokenProvider.generateJwtToken(securityUser);
+		// given
+		String token = jwtTokenProvider.generateJwtToken(securityUser);
+
+		// when
+		SecurityUser securityUser = jwtTokenProvider.getSecurityUser(token);
+
+		// then
+		assertThat(securityUser.getMemberId()).isEqualTo(this.securityUser.getMemberId());
+		assertThat(securityUser.getEmail()).isEqualTo(this.securityUser.getEmail());
+		assertThat(securityUser.getUsername()).isEqualTo(this.securityUser.getUsername());
+		assertThat(securityUser.getPassword()).isEqualTo(this.securityUser.getPassword());
+		assertThat(securityUser.getAuthorities()).isEqualTo(this.securityUser.getAuthorities());
+	}
+
+	@DisplayName("토큰 값이 달라지면 false 반환")
+	@Test
+	void withInvalidToken_ReturnFalse() {
+		// given
+		String token = jwtTokenProvider.generateJwtToken(securityUser);
+		token += "5$#&a!dfe";
+
+		// when
+		boolean result = jwtTokenProvider.validateToken(token);
+
+		// then
+		assertThat(result).isFalse();
+	}
+
+	@DisplayName("토큰 값이 유효하면 true 반환")
+	@Test
+	void withValidToken_ReturnTrue() {
+		// given
+		String token = jwtTokenProvider.generateJwtToken(securityUser);
+
+		// when
+		boolean result = jwtTokenProvider.validateToken(token);
+
+		// then
+		assertThat(result).isTrue();
 	}
 }

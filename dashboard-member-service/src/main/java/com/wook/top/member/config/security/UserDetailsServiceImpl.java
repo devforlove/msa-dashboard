@@ -1,9 +1,10 @@
 package com.wook.top.member.config.security;
 
 import com.wook.top.member.command.domain.model.Member;
+import com.wook.top.member.command.domain.model.UserRole;
 import com.wook.top.member.command.domain.repository.MemberRepository;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,10 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 				member.getMemberInfo().getEmail(),
 				member.getPasswordInfo().getPassword(),
 				member.getMemberInfo().getNickname(),
-				AuthorityUtils.createAuthorityList(
-						member.getRoles().stream().map(r -> String.format("ROLE_%s", r.getName().toString()))
-								.toArray(String[]::new)
-				)
+				member.getRoles().stream().map(UserRole::getName).collect(Collectors.toSet())
 		);
 	}
 }
