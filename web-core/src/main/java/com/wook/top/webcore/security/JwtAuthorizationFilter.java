@@ -1,6 +1,5 @@
-package com.wook.top.member.config.security.api;
+package com.wook.top.webcore.security;
 
-import com.wook.top.member.config.security.SecurityUser;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

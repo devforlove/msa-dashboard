@@ -2,9 +2,9 @@ package com.wook.top.member.command.adapter.out.persistence;
 
 import com.wook.top.common.annotation.PersistenceAdapter;
 import com.wook.top.member.command.application.port.out.UserRolePort;
-import com.wook.top.member.command.domain.model.Role;
 import com.wook.top.member.command.domain.model.UserRole;
 import com.wook.top.member.command.domain.repository.UserRoleRepository;
+import com.wook.top.webcore.member.Role;
 import lombok.RequiredArgsConstructor;
 
 @PersistenceAdapter

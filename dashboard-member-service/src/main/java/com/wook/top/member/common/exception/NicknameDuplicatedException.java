@@ -1,6 +1,7 @@
-package com.wook.top.member.common.error.exception;
+package com.wook.top.member.common.exception;
 
-import com.wook.top.member.common.error.ErrorCode;
+import com.wook.top.webcore.error.ErrorCode;
+import com.wook.top.webcore.error.exception.BusinessException;
 
 public class NicknameDuplicatedException extends BusinessException {
 

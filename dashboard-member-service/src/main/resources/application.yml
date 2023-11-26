@@ -1,3 +1,8 @@
+spring:
+  profiles:
+    include:
+      - web-core
+
 jwt:
   jwtSecretKey: 2ifamoxz94kcpwigfi9spcadcfawasadff324rfsdfsdfsfsd
   expirationTime: 3600000

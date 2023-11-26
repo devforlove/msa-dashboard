@@ -1,4 +1,4 @@
-package com.wook.top.member.config.security;
+package com.wook.top.webcore.security;
 
 public record TokenResponse(String token) {
 

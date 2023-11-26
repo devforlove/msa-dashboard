@@ -1,7 +1,6 @@
-package com.wook.top.member.common.error;
+package com.wook.top.webcore.error;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import java.io.Serializable;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;

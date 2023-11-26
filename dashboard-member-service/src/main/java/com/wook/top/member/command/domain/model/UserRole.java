@@ -1,5 +1,6 @@
 package com.wook.top.member.command.domain.model;
 
+import com.wook.top.webcore.member.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

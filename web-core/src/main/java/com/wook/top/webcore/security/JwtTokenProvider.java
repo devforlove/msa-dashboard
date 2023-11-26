@@ -1,7 +1,6 @@
-package com.wook.top.member.config.security.api;
+package com.wook.top.webcore.security;
 
-import com.wook.top.member.command.domain.model.Role;
-import com.wook.top.member.config.security.SecurityUser;
+import com.wook.top.webcore.member.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtBuilder;
@@ -12,11 +11,8 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
-import java.util.EnumSet;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import javax.crypto.spec.SecretKeySpec;
 import lombok.extern.slf4j.Slf4j;

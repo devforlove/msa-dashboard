@@ -1,16 +1,15 @@
 package com.wook.top.member.config.security.api;
 
-import static org.springframework.http.MediaType.*;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wook.top.member.common.error.ErrorCode;
-import com.wook.top.member.common.error.ErrorResponse;
-import jakarta.servlet.ServletException;
+
+import com.wook.top.webcore.error.ErrorCode;
+import com.wook.top.webcore.error.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;

@@ -1,9 +1,8 @@
 package com.wook.top.testFixture;
 
-import com.wook.top.member.command.domain.model.Role;
-import com.wook.top.member.config.security.SecurityUser;
+import com.wook.top.webcore.member.Role;
+import com.wook.top.webcore.security.SecurityUser;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Set;
 
 public enum SecurityUserFixture {

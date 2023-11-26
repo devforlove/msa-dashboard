@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @WebAdapter
 @RequestMapping("/post/v1")
 @RequiredArgsConstructor
-public class PostRegisterController {
+public class PostController {
 
 }

@@ -1,11 +1,11 @@
-package com.wook.top.member.command.domain.model.converter;
+package com.wook.top.post.domain.model.converter;
 
-import com.wook.top.member.command.domain.model.LikeCount;
+import com.wook.top.post.domain.model.LikeCount;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 @Converter
-public class LikeCountConverter implements AttributeConverter<LikeCount, Integer> {
+public class PostLikeCountConverter implements AttributeConverter<LikeCount, Integer> {
 
 	@Override
 	public Integer convertToDatabaseColumn(LikeCount likeCount) {

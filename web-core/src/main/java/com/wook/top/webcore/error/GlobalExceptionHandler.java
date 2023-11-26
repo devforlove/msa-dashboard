@@ -1,7 +1,7 @@
-package com.wook.top.member.common.error;
+package com.wook.top.webcore.error;
 
-import com.wook.top.member.common.error.ErrorResponse.ValidationError;
-import com.wook.top.member.common.error.exception.BusinessException;
+import com.wook.top.webcore.error.ErrorResponse.ValidationError;
+import com.wook.top.webcore.error.exception.BusinessException;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.http.ResponseEntity;

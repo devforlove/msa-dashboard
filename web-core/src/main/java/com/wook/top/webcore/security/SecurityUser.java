@@ -1,9 +1,7 @@
-package com.wook.top.member.config.security;
+package com.wook.top.webcore.security;
 
-
-import com.wook.top.member.command.domain.model.Role;
+import com.wook.top.webcore.member.Role;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;

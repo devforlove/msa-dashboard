@@ -1,7 +1,6 @@
-package com.wook.top.member.common.error.exception;
+package com.wook.top.webcore.error.exception;
 
-
-import com.wook.top.member.common.error.ErrorCode;
+import com.wook.top.webcore.error.ErrorCode;
 
 public class BusinessException extends RuntimeException {
 	private final ErrorCode errorCode;
