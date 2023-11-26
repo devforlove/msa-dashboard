@@ -1,26 +1,38 @@
 package com.wook.top.member.config.security;
 
 
+import com.wook.top.member.command.domain.model.Role;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Getter
-@RequiredArgsConstructor
 public class SecurityUser implements UserDetails {
-	private final long memberId;
+	private final Long memberId;
 	private final String email;
 	private final String password;
 	private final String nickname;
 
-	private final List<GrantedAuthority> authorities;
+	private final Set<Role> roles;
+
+	public SecurityUser(Long memberId, String email, String password, String nickname, Set<Role> roles) {
+		this.memberId = memberId;
+		this.email = email;
+		this.password = password;
+		this.nickname = nickname;
+		this.roles = roles;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
+		return AuthorityUtils.createAuthorityList(
+				roles.stream().map(r -> String.format("ROLE_%s", r.name()))
+						.toArray(String[]::new)
+		);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.wook.top.member.query.adapter;
 
 import com.wook.top.common.annotation.WebAdapter;
+import com.wook.top.member.config.security.SecurityUser;
 import com.wook.top.member.query.application.port.in.NicknameCheckUseCase;
 import com.wook.top.member.query.dto.MemberSummary;
 import lombok.RequiredArgsConstructor;
@@ -28,10 +29,5 @@ public class MemberCheckNicknameController {
 	) {
 		checkNicknameUseCase.checkNicknameDuplication(nickname);
 		return new ResponseEntity<>(new MemberCheckNicknameResponse(nickname), HttpStatus.OK);
-	}
-
-	@GetMapping("/me")
-	private ResponseEntity<MemberSummary> me() {
-		return null;
 	}
 }

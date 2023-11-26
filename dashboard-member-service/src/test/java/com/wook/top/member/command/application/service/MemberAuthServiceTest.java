@@ -12,7 +12,6 @@ import com.wook.top.member.command.domain.model.Role;
 import com.wook.top.member.command.domain.model.UserRole;
 import com.wook.top.member.common.error.exception.EmailDuplicatedException;
 import com.wook.top.member.common.error.exception.NicknameDuplicatedException;
-import com.wook.top.member.support.presentation.BaseControllerTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

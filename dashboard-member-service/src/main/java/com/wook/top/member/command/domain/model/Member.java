@@ -66,8 +66,8 @@ public class Member implements Serializable {
 		this.roles = roles;
 	}
 
-	public static Member createMember(String email, String password, String nickname, Set<UserRole> roles) {
-		MemberInfo memberInfo = new MemberInfo(email, nickname);
+	public static Member createMember(String email, String password, String nickname, String profileImage, Set<UserRole> roles) {
+		MemberInfo memberInfo = new MemberInfo(email, nickname, profileImage);
 		PasswordInfo passwordInfo = new PasswordInfo(password);
 		LikeCount likeCount = new LikeCount(0);
 		Score score = new Score(0);

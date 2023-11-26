@@ -23,6 +23,6 @@ public class MemberAuthAdapter implements MemberAuthPort {
 
 	@Override
 	public boolean existByNickname(String nickname) {
-		return memberRepository.existsByMemberInfoName(nickname);
+		return memberRepository.existsByMemberInfoNickname(nickname);
 	}
 }

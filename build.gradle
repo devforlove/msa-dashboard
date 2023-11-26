@@ -20,6 +20,10 @@ buildscript {
 	}
 }
 
+plugins {
+	id 'com.google.cloud.tools.jib' version '3.3.1' apply false
+}
+
 allprojects {
 	group 'com.wook.top'
 	version '1.0'
@@ -29,6 +33,7 @@ subprojects {
 	apply plugin: 'org.springframework.boot'
 	apply plugin: 'io.spring.dependency-management'
 	apply plugin: 'java-library'
+	apply plugin: 'jacoco'
 
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
@@ -71,6 +76,12 @@ project(':dashboard-common') {
 }
 
 project(':dashboard-member-service') {
+	dependencies {
+		implementation project(path: ':dashboard-common', configuration: 'default')
+	}
+}
+
+project(':dashboard-post-command-service') {
 	dependencies {
 		implementation project(path: ':dashboard-common', configuration: 'default')
 	}
