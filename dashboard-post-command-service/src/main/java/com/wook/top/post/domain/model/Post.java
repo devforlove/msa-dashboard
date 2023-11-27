@@ -23,15 +23,27 @@ public class Post {
 	private Long postId;
 
 	@Column(name = "post_writer_id")
-	private String writerId;
+	private Long writerId;
 
 	@Column(name = "post_title")
 	private String title;
 
-	@Column(name = "post_text")
-	private String text;
+	@Column(name = "post_content")
+	private String content;
 
 	@Column(name = "post_like_count")
 	@Convert(converter = PostLikeCountConverter.class)
 	private LikeCount likeCount;
+
+	public Post(Long writerId, String title, String content, LikeCount likeCount) {
+		this.writerId = writerId;
+		this.title = title;
+		this.content = content;
+		this.likeCount = likeCount;
+	}
+
+	public static Post createPost(Long writerId, String title, String text) {
+		LikeCount likeCount = new LikeCount(0);
+		return new Post(writerId, title, text, likeCount);
+	}
 }

@@ -81,6 +81,7 @@ project(':dashboard-member-service') {
 project(':dashboard-post-command-service') {
 	dependencies {
 		implementation project(path: ':dashboard-common', configuration: 'default')
+		implementation project(path: ':web-core', configuration: 'default')
 	}
 }
 
