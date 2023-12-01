@@ -1,9 +1,9 @@
 package com.wook.top.member.query.adapter;
 
 import com.wook.top.common.annotation.WebAdapter;
-import com.wook.top.member.config.security.SecurityUser;
 import com.wook.top.member.query.dao.MemberQueryDao;
 import com.wook.top.member.query.dto.MemberSummary;
+import com.wook.top.webcore.security.SecurityUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

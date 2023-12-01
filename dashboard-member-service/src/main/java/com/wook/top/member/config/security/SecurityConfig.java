@@ -1,7 +1,8 @@
 package com.wook.top.member.config.security;
 
+
 import com.wook.top.member.config.security.api.AuthenticationFilter;
-import com.wook.top.member.config.security.api.JwtAuthorizationFilter;
+import com.wook.top.webcore.security.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

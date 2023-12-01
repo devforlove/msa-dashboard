@@ -1,24 +1,20 @@
 package com.wook.top.member.config.security.api;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.wook.top.member.command.domain.model.Member;
-import com.wook.top.member.command.domain.model.Role;
 import com.wook.top.member.command.domain.model.UserRole;
 import com.wook.top.member.command.domain.repository.MemberRepository;
 import com.wook.top.member.command.domain.repository.UserRoleRepository;
-import com.wook.top.member.config.security.AuthenticationRequest;
-import com.wook.top.member.config.security.SecurityUser;
 import com.wook.top.member.support.presentation.BaseControllerTest;
 import com.wook.top.testFixture.MemberFixture;
+import com.wook.top.webcore.member.Role;
+import com.wook.top.member.config.security.AuthenticationRequest;
 import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.ResultActions;
 

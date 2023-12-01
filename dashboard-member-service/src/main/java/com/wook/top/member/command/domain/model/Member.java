@@ -1,6 +1,6 @@
 package com.wook.top.member.command.domain.model;
 
-import com.wook.top.member.command.domain.model.converter.LikeCountConverter;
+import com.wook.top.member.command.domain.model.converter.MemberLikeCountConverter;
 import com.wook.top.member.command.domain.model.converter.ScoreConverter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
@@ -39,7 +39,7 @@ public class Member implements Serializable {
 	private PasswordInfo passwordInfo;
 
 	@Column(name = "member_like_count")
-	@Convert(converter = LikeCountConverter.class)
+	@Convert(converter = MemberLikeCountConverter.class)
 	private LikeCount likeCount;
 
 	@Column(name = "member_score")

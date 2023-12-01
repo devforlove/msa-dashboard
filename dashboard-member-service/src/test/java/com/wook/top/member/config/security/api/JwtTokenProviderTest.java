@@ -2,22 +2,28 @@ package com.wook.top.member.config.security.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.wook.top.member.config.security.SecurityUser;
 import com.wook.top.testFixture.SecurityUserFixture;
+import com.wook.top.webcore.security.JwtTokenProvider;
+import com.wook.top.webcore.security.SecurityUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@ExtendWith(MockitoExtension.class)
+@EnableConfigurationProperties
+@SpringBootTest(classes = JwtTokenProvider.class)
 @DisplayName("JwtTokenProvider 테스트")
 class JwtTokenProviderTest {
 	JwtTokenProvider jwtTokenProvider;
 	SecurityUser securityUser;
 
-	public static final String jwtSecretKey = "zv3Xa#Viv92Sskwksdi3!2amvzovmosa90gsmkfoDDcCw3@#%f@";
-	public static final long expireTime = 3600000;
+	@Value("${jwt.jwtSecretKey}")
+	private String jwtSecretKey;
+
+	@Value("${jwt.expirationTime}")
+	private long expireTime;
 
 	@BeforeEach
 	void setup() {

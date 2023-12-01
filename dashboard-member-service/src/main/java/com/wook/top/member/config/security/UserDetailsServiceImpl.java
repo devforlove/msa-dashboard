@@ -3,6 +3,7 @@ package com.wook.top.member.config.security;
 import com.wook.top.member.command.domain.model.Member;
 import com.wook.top.member.command.domain.model.UserRole;
 import com.wook.top.member.command.domain.repository.MemberRepository;
+import com.wook.top.webcore.security.SecurityUser;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
