@@ -74,14 +74,15 @@ project(':dashboard-common') {
 project(':dashboard-member-service') {
 	dependencies {
 		implementation project(path: ':dashboard-common', configuration: 'default')
-		implementation project(path: ':web-core', configuration: 'default')
+		implementation project(path: ':core-web', configuration: 'default')
 	}
 }
 
 project(':dashboard-post-command-service') {
 	dependencies {
 		implementation project(path: ':dashboard-common', configuration: 'default')
-		implementation project(path: ':web-core', configuration: 'default')
+		implementation project(path: ':core-web', configuration: 'default')
+		implementation project(path: ':core-event-publisher', configuration: 'default')
 	}
 }
 

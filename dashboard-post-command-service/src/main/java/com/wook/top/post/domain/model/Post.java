@@ -1,12 +1,17 @@
 package com.wook.top.post.domain.model;
 
+import com.wook.top.post.domain.event.PostInsertEvent;
+import com.wook.top.post.domain.event.PostUpdateEvent;
 import com.wook.top.post.domain.model.converter.PostLikeCountConverter;
+import com.wook.top.publishercore.Events;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PostPersist;
+import jakarta.persistence.PostUpdate;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,5 +50,15 @@ public class Post {
 	public static Post createPost(Long writerId, String title, String text) {
 		LikeCount likeCount = new LikeCount(0);
 		return new Post(writerId, title, text, likeCount);
+	}
+
+	@PostPersist
+	private void onPostPersist() {
+		Events.raise(new PostInsertEvent(this));
+	}
+
+	@PostUpdate
+	private void onPostUpdate() {
+		Events.raise(new PostUpdateEvent(this));
 	}
 }

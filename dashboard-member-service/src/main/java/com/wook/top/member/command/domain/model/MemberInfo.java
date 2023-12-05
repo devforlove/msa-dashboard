@@ -24,4 +24,9 @@ public class MemberInfo {
 		this.nickname = nickname;
 		this.profileImage = profileImage;
 	}
+
+	public void changeMemberInfo(String nickname, String profileImage) {
+		this.nickname = nickname;
+		this.profileImage = profileImage;
+	}
 }
