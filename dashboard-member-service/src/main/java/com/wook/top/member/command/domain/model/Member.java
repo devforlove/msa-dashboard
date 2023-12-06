@@ -66,6 +66,10 @@ public class Member implements Serializable {
 		this.roles = roles;
 	}
 
+	public void changeProfile(String nickname, String profileImage) {
+		this.memberInfo.changeMemberInfo(nickname, profileImage);
+	}
+
 	public static Member createMember(String email, String password, String nickname, String profileImage, Set<UserRole> roles) {
 		MemberInfo memberInfo = new MemberInfo(email, nickname, profileImage);
 		PasswordInfo passwordInfo = new PasswordInfo(password);

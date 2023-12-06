@@ -8,5 +8,6 @@ include 'dashboard-review-command-service'
 include 'dashboard-message-service'
 include 'dashboard-review-query-service'
 include 'dashboard-front-service'
-include 'web-core'
+include 'core-web'
+include 'core-event-publisher'
 

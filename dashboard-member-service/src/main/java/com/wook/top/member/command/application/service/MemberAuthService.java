@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @UseCase
 @RequiredArgsConstructor
 public class MemberAuthService implements MemberAuthUseCase {
+
 	private final MemberAuthPort memberAuthPort;
 	private final UserRolePort userRolePort;
 	private final PasswordEncoder passwordEncoder;
