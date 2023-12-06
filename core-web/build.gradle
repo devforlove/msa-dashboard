@@ -1,16 +1,8 @@
-plugins {
-    id 'java'
-}
+bootJar.enabled = false
+jar.enabled = true
 
-group 'com.wook.top.web-core'
-version '1.0'
-
-repositories {
-    mavenCentral()
-}
-
-bootJar { enabled = false }
-jar { enabled = true }
+group = 'com.wook.top.webcore'
+version = '0.0.1'
 
 dependencies {
     // web

@@ -1,0 +1,9 @@
+bootJar.enabled = false
+jar.enabled = true
+
+group = 'com.wook.top.kafkapublisher'
+version = '0.0.1'
+
+dependencies {
+    implementation 'org.springframework.kafka:spring-kafka'
+}

@@ -7,6 +7,5 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class PostUpdateEvent {
-
 	private final Post post;
 }

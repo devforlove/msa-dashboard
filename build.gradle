@@ -60,7 +60,6 @@ subprojects {
 		testAnnotationProcessor 'org.projectlombok:lombok'
 
 		implementation 'org.springframework.boot:spring-boot-starter-aop'
-
 		implementation 'org.springframework.boot:spring-boot-starter-test'
 	}
 }
@@ -83,6 +82,7 @@ project(':dashboard-post-command-service') {
 		implementation project(path: ':dashboard-common', configuration: 'default')
 		implementation project(path: ':core-web', configuration: 'default')
 		implementation project(path: ':core-event-publisher', configuration: 'default')
+		implementation project(path: ':core-kafka-publisher', configuration: 'default')
 	}
 }
 
