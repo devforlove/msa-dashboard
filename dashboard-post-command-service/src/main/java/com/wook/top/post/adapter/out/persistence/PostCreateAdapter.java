@@ -7,7 +7,6 @@ import com.wook.top.post.domain.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-@Repository
 @PersistenceAdapter
 @RequiredArgsConstructor
 public class PostCreateAdapter implements PostCreatePort {

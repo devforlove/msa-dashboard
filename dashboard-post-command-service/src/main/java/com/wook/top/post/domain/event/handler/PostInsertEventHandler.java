@@ -4,6 +4,7 @@ import com.wook.top.post.domain.event.PostInsertEvent;
 import com.wook.top.post.domain.model.InternalPostEvent;
 import com.wook.top.post.domain.model.Post;
 import com.wook.top.post.domain.model.PostEventType;
+import com.wook.top.post.domain.repository.PostEventRepository;
 import com.wook.top.publishercore.Events;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @RequiredArgsConstructor
 public class PostInsertEventHandler {
 
+	private final PostEventRepository postEventRepository;
+
 	@TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
 	public void handle(PostInsertEvent event) {
 		Post post = event.getPost();
@@ -22,6 +25,7 @@ public class PostInsertEventHandler {
 				PostEventType.INSERT,
 				post.getTitle()
 		);
+		postEventRepository.save(coverEvent);
 		Events.raise(coverEvent);
 	}
 }
