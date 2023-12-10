@@ -24,7 +24,7 @@ public class PostInternalEventHandler {
 		event.publish();
 		try {
 			postInsertEventPublishPort.publish(event);
-		} catch (RuntimeException e) {
+		} catch (Exception e) {
 			log.warn("Internal Cover event publish failed {}.", e.getMessage());
 		}
 	}
