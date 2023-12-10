@@ -16,3 +16,7 @@ spring:
         format_sql: true
     hibernate:
       ddl-auto: update
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092, localhost:9093, localhost:9094

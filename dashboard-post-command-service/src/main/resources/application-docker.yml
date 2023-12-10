@@ -17,3 +17,6 @@ spring:
     hibernate:
       ddl-auto: update
 
+  kafka:
+    producer:
+      bootstrap-servers: kafka-1:9092, kafka-2:9093, kafka-3:9094
