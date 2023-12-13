@@ -2,6 +2,7 @@ package com.wook.top.post.application.service;
 
 import com.wook.top.post.application.port.out.PostInsertEventPublishPort;
 import com.wook.top.post.domain.model.InternalPostEvent;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
@@ -17,15 +18,19 @@ import org.springframework.transaction.event.TransactionalEventListener;
 public class PostInternalEventHandler {
 
 	private final PostInsertEventPublishPort postInsertEventPublishPort;
-
+	private final EntityManager em;
 	@Async
 	@TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
 	public void handle(InternalPostEvent event) {
-		event.publish();
+		publish(event);
 		try {
 			postInsertEventPublishPort.publish(event);
 		} catch (Exception e) {
 			log.warn("Internal Cover event publish failed {}.", e.getMessage());
 		}
+	}
+
+	private void publish(InternalPostEvent event) {
+		em.merge(event).publish();
 	}
 }

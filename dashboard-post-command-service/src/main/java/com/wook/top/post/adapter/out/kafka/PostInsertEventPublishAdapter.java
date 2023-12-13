@@ -1,4 +1,4 @@
-package com.wook.top.post.adapter.out.stream;
+package com.wook.top.post.adapter.out.kafka;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

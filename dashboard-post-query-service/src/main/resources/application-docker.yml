@@ -1,0 +1,9 @@
+server:
+  port: 8064
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: kafka-1:9092, kafka-2:9093, kafka-3:9094
+    listener:
+      type: batch

@@ -11,4 +11,5 @@ include 'dashboard-front-service'
 include 'core-web'
 include 'core-event-publisher'
 include 'core-kafka-producer'
+include 'core-kafka-consumer'
 
