@@ -14,7 +14,7 @@ public class PostCreateListener {
 	)
 	public void postCreateListener(ConsumerRecords<String, String> records) {
 		records.forEach(record -> {
-			System.out.println(record.value());
+
 		});
 	}
 }

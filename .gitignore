@@ -299,4 +299,7 @@ axon-server-se
 #querydsl
 generated
 
+#mongodb
+mongodb
+
 # End of https://www.toptal.com/developers/gitignore/api/java,gradle,intellij+all,windows,macos,visualstudiocode,eclipse

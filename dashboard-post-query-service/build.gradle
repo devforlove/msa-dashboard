@@ -1,19 +1,31 @@
 plugins {
-    id 'java'
+    id 'com.palantir.docker' version '0.35.0'
 }
 
-group 'com.wook.top.post'
-version 'unspecified'
+bootJar.enabled = true
+jar.enabled = false
 
-repositories {
-    mavenCentral()
-}
+group = 'com.wook.top.post'
+version = '1.0.0'
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'com.mysql:mysql-connector-j'
+    testImplementation 'com.h2database:h2'
 }
 
-test {
-    useJUnitPlatform()
+bootJar {
+    launchScript()
+    manifest {
+        attributes 'Start-Class': 'com.wook.top.PostQueryServiceApplication'
+    }
+}
+
+docker {
+    println(tasks.bootJar.outputs.files)
+    name project.name + ":" + version
+    dockerfile file("../Dockerfile")
+    files tasks.bootJar.outputs.files
+    buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
 }
