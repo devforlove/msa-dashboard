@@ -22,19 +22,16 @@ public class PostInsertEventPublishAdapter implements PostInsertEventPublishPort
 
 	@Override
 	public void publish(InternalPostEvent event) {
-		CompletableFuture<SendResult<String, Object>> future = null;
 		try {
-			future = kafkaTemplate.send(TOPIC, objectMapper.writeValueAsString(event));
+			kafkaTemplate.send(TOPIC, objectMapper.writeValueAsString(event)).whenComplete((result , e) -> {
+				if (e == null) {
+					log.info("produced message topic");
+				} else {
+					log.error("Error occurred while producing message: {}", e.getMessage());
+				}
+			});
 		} catch (JsonProcessingException e) {
 			throw new IllegalArgumentException(e);
 		}
-
-		future.whenComplete((result , e) -> {
-			if (e == null) {
-				log.info("produced message topic");
-			} else {
-				log.error("Error occurred while producing message: {}", e.getMessage());
-			}
-		});
 	}
 }
