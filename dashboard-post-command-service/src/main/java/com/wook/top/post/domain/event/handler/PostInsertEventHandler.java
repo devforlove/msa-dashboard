@@ -23,7 +23,8 @@ public class PostInsertEventHandler {
 		InternalPostEvent coverEvent = new InternalPostEvent(
 				post.getPostId(),
 				PostEventType.INSERT,
-				post.getTitle()
+				post.getTitle(),
+				post.getWriterId()
 		);
 		postEventRepository.save(coverEvent);
 		Events.raise(coverEvent);
