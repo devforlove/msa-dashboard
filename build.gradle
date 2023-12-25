@@ -94,9 +94,3 @@ project(':dashboard-post-query-service') {
 		implementation project(path: ':client-post-command', configuration: 'default')
 	}
 }
-
-project(':dashboard-front-service') {
-	dependencies {
-		implementation project(path: ':dashboard-common', configuration: 'default')
-	}
-}
