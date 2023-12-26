@@ -1,4 +1,4 @@
-package com.wook.top.member.query.dto;
+package com.wook.top.member.config.query.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,8 +1,8 @@
-package com.wook.top.member.query.adapter;
+package com.wook.top.member.config.query.adapter;
 
 import com.wook.top.common.annotation.PersistenceAdapter;
-import com.wook.top.member.query.application.port.out.NicknameCheckPort;
-import com.wook.top.member.query.dao.MemberQueryDao;
+import com.wook.top.member.config.query.application.port.out.NicknameCheckPort;
+import com.wook.top.member.config.query.dao.MemberQueryDao;
 import lombok.RequiredArgsConstructor;
 
 @PersistenceAdapter
