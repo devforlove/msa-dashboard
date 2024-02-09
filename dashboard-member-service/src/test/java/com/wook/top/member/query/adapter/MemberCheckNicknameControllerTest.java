@@ -11,4 +11,17 @@ class MemberCheckNicknameControllerTest extends BaseControllerTest {
 	void findAll() {
 
 	}
+
+	@Test
+	void strTest() {
+		String str = new String("ssdf");
+		System.out.println(System.identityHashCode(str));
+		sss(str);
+	}
+
+	private void sss(String str) {
+		System.out.println(System.identityHashCode(str));
+		str = str + "ss";
+		System.out.println(System.identityHashCode(str));
+	}
 }

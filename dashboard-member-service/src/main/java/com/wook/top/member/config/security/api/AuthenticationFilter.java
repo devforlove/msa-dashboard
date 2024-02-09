@@ -32,7 +32,7 @@ public class AuthenticationFilter extends AbstractAuthenticationProcessingFilter
 	}
 
 	@Override
-	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
+	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException {
 		AuthenticationRequest authenticationRequest = objectMapper.readValue(request.getInputStream(), AuthenticationRequest.class);
 		String email = authenticationRequest.email();
 		String password = authenticationRequest.password();

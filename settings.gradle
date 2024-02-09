@@ -12,4 +12,5 @@ include 'core-event-publisher'
 include 'core-kafka-producer'
 include 'core-kafka-consumer'
 include 'client-post-command'
+include 'client-member'
 
