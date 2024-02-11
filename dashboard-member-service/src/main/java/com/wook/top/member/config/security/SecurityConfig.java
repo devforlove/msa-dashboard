@@ -27,7 +27,7 @@ public class SecurityConfig {
 		return http
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/member/**").permitAll()
-						.requestMatchers("/member/me").hasRole("MEMBER")
+						.requestMatchers("/member/v1/me").hasRole("MEMBER")
 						.anyRequest().authenticated()
 				)
 				.formLogin(AbstractHttpConfigurer::disable)

@@ -95,8 +95,10 @@ project(':dashboard-post-query-service') {
 	}
 }
 
-project(':dashboard-front-service') {
+project(':dashboard-post-search-service') {
 	dependencies {
 		implementation project(path: ':dashboard-common', configuration: 'default')
+		implementation project(path: ':core-web', configuration: 'default')
+		implementation project(path: ':core-kafka-consumer', configuration: 'default')
 	}
 }

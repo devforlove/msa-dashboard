@@ -1,6 +1,7 @@
 package com.wook.top.member.command.domain.repository;
 
 import com.wook.top.member.command.domain.model.Member;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.repository.Repository;
 

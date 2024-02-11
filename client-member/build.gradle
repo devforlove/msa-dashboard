@@ -1,7 +1,7 @@
 bootJar.enabled = false
 jar.enabled = true
 
-group = 'com.wook.top.postcommandclient'
+group = 'com.wook.top.memberclient'
 version = '1.0.0'
 
 dependencies {

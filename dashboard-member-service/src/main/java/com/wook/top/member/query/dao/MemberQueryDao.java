@@ -5,7 +5,6 @@ import static com.wook.top.member.command.domain.model.QMember.member;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.wook.top.member.command.domain.model.QMember;
 import com.wook.top.member.query.dto.MemberSummary;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

@@ -19,6 +19,8 @@ public class PostCreatService implements PostCreateUseCase {
 	@Transactional
 	@Override
 	public PostCreateInfo createPost(PostCreateCommand command) {
+		// member에 존재?
+
 		Post post = Post.createPost(command.writerId(), command.title(), command.content());
 		postCreatePort.savePost(post);
 		return new PostCreateInfo(post.getTitle(), post.getContent());
