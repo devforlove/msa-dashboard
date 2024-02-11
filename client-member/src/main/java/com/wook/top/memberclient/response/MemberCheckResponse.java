@@ -1,5 +1,4 @@
 package com.wook.top.memberclient.response;
 
-public class MemberCheckResponse {
-
+public record MemberCheckResponse(boolean isValid) {
 }

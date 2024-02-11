@@ -20,3 +20,7 @@ spring:
   kafka:
     producer:
       bootstrap-servers: localhost:9092, localhost:9093, localhost:9094
+
+feign:
+  url:
+    member-service: localhost:8071/member

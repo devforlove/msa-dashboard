@@ -12,7 +12,8 @@ public enum ErrorCode {
 	NICKNAME_DUPLICATED(BAD_REQUEST, 400001, "nickname duplicated"),
 	EMAIL_DUPLICATED(BAD_REQUEST, 400002, "email duplicated"),
 	USER_UNAUTHORIZED(UNAUTHORIZED, 401000, "user not authorized"),
-	MEMBER_NOT_FOUND(UNAUTHORIZED, 404000, "member not found");
+	MEMBER_NOT_FOUND(UNAUTHORIZED, 404000, "member not found"),
+	MEMBER_NOT_VALID(UNAUTHORIZED, 403001, "member not valid");
 
 	private final HttpStatus status;
 	private final int  code;

@@ -3,6 +3,7 @@ package com.wook.top.webcore.security;
 import com.wook.top.webcore.member.Role;
 import java.util.Collection;
 import java.util.Set;
+import lombok.Builder;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -17,6 +18,7 @@ public class SecurityUser implements UserDetails {
 
 	private final Set<Role> roles;
 
+	@Builder
 	public SecurityUser(Long memberId, String email, String password, String nickname, Set<Role> roles) {
 		this.memberId = memberId;
 		this.email = email;

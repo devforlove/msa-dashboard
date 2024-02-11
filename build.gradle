@@ -77,15 +77,6 @@ project(':dashboard-member-service') {
 	}
 }
 
-project(':dashboard-post-command-service') {
-	dependencies {
-		implementation project(path: ':dashboard-common', configuration: 'default')
-		implementation project(path: ':core-web', configuration: 'default')
-		implementation project(path: ':core-event-publisher', configuration: 'default')
-		implementation project(path: ':core-kafka-producer', configuration: 'default')
-	}
-}
-
 project(':dashboard-post-query-service') {
 	dependencies {
 		implementation project(path: ':dashboard-common', configuration: 'default')

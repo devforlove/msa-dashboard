@@ -1,6 +1,7 @@
 package com.wook.top.postcommand.postquery;
 
-import com.wook.top.postcommand.postquery.PostClientErrorDecoder.PostInfoResponse;
+import com.wook.top.postcommandclient.config.FeignConfig;
+import com.wook.top.postcommandclient.postquery.response.PostInfoResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(
 		name = "member-client",
 		url = "${feign.url.post-command}",
-		configuration = PostQueryFeignConfig.class
+		configuration = FeignConfig.class
 )
 public interface PostQueryClient {
 
