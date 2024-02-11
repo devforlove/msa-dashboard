@@ -16,6 +16,6 @@ public interface MemberClient {
 
 	@GetMapping("/v1/{memberId}/check")
 	ResponseEntity<MemberCheckResponse> checkMember(
-			@PathVariable Long memberId
+			@PathVariable Long memberIds
 	);
 }
