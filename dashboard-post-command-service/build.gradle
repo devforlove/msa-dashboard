@@ -27,6 +27,7 @@ dependencies {
     testImplementation 'com.h2database:h2'
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation(testFixtures(project(":client-member")))
+    testImplementation(testFixtures(project(":core-kafka-producer")))
 }
 
 bootJar {

@@ -1,3 +1,7 @@
+plugins {
+    id 'java-test-fixtures'
+}
+
 bootJar.enabled = false
 jar.enabled = true
 
@@ -6,4 +10,5 @@ version = '0.0.1'
 
 dependencies {
     api 'org.springframework.kafka:spring-kafka'
+    testFixturesApi 'org.springframework.kafka:spring-kafka-test'
 }

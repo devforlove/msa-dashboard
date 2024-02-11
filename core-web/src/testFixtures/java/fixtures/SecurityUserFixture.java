@@ -1,4 +1,4 @@
-package com.wook.top.testFixture;
+package fixtures;
 
 import com.wook.top.webcore.member.Role;
 import com.wook.top.webcore.security.SecurityUser;

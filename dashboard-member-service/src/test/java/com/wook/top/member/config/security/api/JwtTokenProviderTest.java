@@ -2,7 +2,7 @@ package com.wook.top.member.config.security.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.wook.top.testFixture.SecurityUserFixture;
+import fixtures.SecurityUserFixture;
 import com.wook.top.webcore.security.JwtTokenProvider;
 import com.wook.top.webcore.security.SecurityUser;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package com.wook.top.testFixture;
+package fixtures;
 
 import com.wook.top.member.command.domain.model.Member;
 import com.wook.top.member.command.domain.model.UserRole;

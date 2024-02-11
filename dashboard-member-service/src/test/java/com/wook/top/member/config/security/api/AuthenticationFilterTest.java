@@ -7,7 +7,7 @@ import com.wook.top.member.command.domain.model.UserRole;
 import com.wook.top.member.command.domain.repository.MemberRepository;
 import com.wook.top.member.command.domain.repository.UserRoleRepository;
 import com.wook.top.member.support.presentation.BaseControllerTest;
-import com.wook.top.testFixture.MemberFixture;
+import fixtures.MemberFixture;
 import com.wook.top.webcore.member.Role;
 import com.wook.top.member.config.security.AuthenticationRequest;
 import java.util.Set;
