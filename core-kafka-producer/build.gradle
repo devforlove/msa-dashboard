@@ -5,5 +5,5 @@ group = 'com.wook.top.kafkaproducer'
 version = '0.0.1'
 
 dependencies {
-    implementation 'org.springframework.kafka:spring-kafka'
+    api 'org.springframework.kafka:spring-kafka'
 }

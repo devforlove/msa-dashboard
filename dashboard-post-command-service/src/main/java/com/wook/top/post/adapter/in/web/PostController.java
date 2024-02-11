@@ -26,7 +26,7 @@ public class PostController {
 	@PostMapping("/post/me")
 	public ResponseEntity<PostCreateInfo> createPost(@RequestBody PostCreateRequest request, @AuthenticationPrincipal SecurityUser securityUser) {
 
-		PostCreateCommand command = new PostCreateCommand(securityUser.getMemberId(), request.content(), request.content());
+		PostCreateCommand command = new PostCreateCommand(securityUser.getMemberId(), request.title(), request.content());
 		return new ResponseEntity<>(postCreateUseCase.createPost(command), HttpStatus.CREATED);
 	}
 }
