@@ -19,7 +19,7 @@ public class PostInternalEventHandler {
 
 	private final PostInsertEventPublishPort postInsertEventPublishPort;
 	private final EntityManager em;
-	@Async
+
 	@TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
 	public void handle(InternalPostEvent event) {
 		publish(event);

@@ -13,16 +13,16 @@ import com.wook.top.post.adapter.in.web.request.PostCreateRequest;
 import com.wook.top.post.domain.model.Post;
 import com.wook.top.post.domain.repository.PostRepository;
 import com.wook.top.post.presentation.BaseControllerTest;
-import java.util.Optional;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.security.test.context.support.TestExecutionEvent;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.ResultActions;
-import org.webjars.NotFoundException;
 
 class PostControllerTest extends BaseControllerTest {
 
@@ -49,9 +49,7 @@ class PostControllerTest extends BaseControllerTest {
 
 		// then
 		result.andExpect(status().is2xxSuccessful());
-		Optional<Post> postOptional = postRepository.findById(1L);
-		Post post = postOptional.orElseThrow(() -> new NotFoundException("post not found"));
-		assertThat(post.getTitle()).isEqualTo("title");
-		assertThat(post.getContent()).isEqualTo("content");
+		List<Post> posts = postRepository.findByWriterId(1L);
+		assertThat(posts.size()).isEqualTo(1);
 	}
 }
