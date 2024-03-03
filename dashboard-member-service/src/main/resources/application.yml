@@ -1,3 +1,7 @@
 jwt:
   jwtSecretKey: 2ifamoxz94kcpwigfi9spcadcfawasadff324rfsdfsdfsfsd
   expirationTime: 3600000
+
+feign:
+  url:
+    member-service: localhost:8071/member

@@ -1,12 +1,20 @@
 package com.wook.top.kafkapublisher.post.event;
 
 import com.wook.top.kafkapublisher.post.type.PostEventType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-public class InternalPostEvent {
+@Getter
+@NoArgsConstructor
+public class PostEvent {
 	private Long postId;
-	private Long memberId;
+	private PostEventType eventType;
 
-	private PostEventType type;
+	public static PostEvent of(Long postId, PostEventType type) {
+		PostEvent postEvent = new PostEvent();
+		postEvent.postId = postId;
+		postEvent.eventType = type;
 
-	private String attributes;
+		return postEvent;
+	}
 }

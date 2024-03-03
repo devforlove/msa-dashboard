@@ -1,7 +1,7 @@
 package com.wook.top.member.query.adapter;
 
 import com.wook.top.common.annotation.WebAdapter;
-import com.wook.top.member.query.application.port.in.NicknameCheckUseCase;
+import com.wook.top.member.query.application.port.in.CheckNicknameQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/member/v1")
 @RequiredArgsConstructor
-public class MemberCheckController {
-	private final NicknameCheckUseCase checkNicknameUseCase;
+public class CheckNicknameController {
+	private final CheckNicknameQuery checkNicknameQuery;
 
 	@GetMapping("/nickname/{nickname}")
 	public ResponseEntity<MemberCheckNicknameResponse> checkNicknameDuplication(
 			@PathVariable("nickname") String nickname
 	) {
-		checkNicknameUseCase.checkNicknameDuplication(nickname);
+		checkNicknameQuery.checkNicknameDuplication(nickname);
 		return new ResponseEntity<>(new MemberCheckNicknameResponse(nickname), HttpStatus.OK);
 	}
 }

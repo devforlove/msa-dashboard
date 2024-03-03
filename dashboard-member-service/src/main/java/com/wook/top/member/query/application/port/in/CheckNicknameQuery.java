@@ -1,6 +1,6 @@
 package com.wook.top.member.query.application.port.in;
 
-public interface NicknameCheckUseCase {
+public interface CheckNicknameQuery {
 
 	void checkNicknameDuplication(String nickname);
 }

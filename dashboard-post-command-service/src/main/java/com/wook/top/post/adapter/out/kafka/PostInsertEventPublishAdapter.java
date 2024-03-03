@@ -3,6 +3,7 @@ package com.wook.top.post.adapter.out.kafka;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wook.top.common.annotation.ExternalSystemAdapter;
+import com.wook.top.kafkapublisher.post.event.PostEvent;
 import com.wook.top.post.application.port.out.PostInsertEventPublishPort;
 import com.wook.top.post.domain.model.InternalPostEvent;
 import java.util.concurrent.CompletableFuture;
@@ -21,7 +22,7 @@ public class PostInsertEventPublishAdapter implements PostInsertEventPublishPort
 	private static final String TOPIC = "post-insert-topic";
 
 	@Override
-	public void publish(InternalPostEvent event) {
+	public void publish(PostEvent event) {
 		try {
 			kafkaTemplate.send(TOPIC, objectMapper.writeValueAsString(event)).whenComplete((result , e) -> {
 				if (e == null) {

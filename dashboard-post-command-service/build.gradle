@@ -19,7 +19,7 @@ dependencies {
 
 
     implementation project(':core-event-publisher')
-    implementation project(":core-kafka-producer")
+    implementation project(":core-kafka")
     implementation project(":dashboard-common")
     implementation project(":core-web")
     implementation project(":client-member")
@@ -27,7 +27,7 @@ dependencies {
     testImplementation 'com.h2database:h2'
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation(testFixtures(project(":client-member")))
-    testImplementation(testFixtures(project(":core-kafka-producer")))
+    testImplementation(testFixtures(project(":core-kafka")))
 }
 
 bootJar {

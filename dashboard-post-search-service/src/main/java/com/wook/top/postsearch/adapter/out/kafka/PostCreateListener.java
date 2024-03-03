@@ -5,12 +5,10 @@ import org.springframework.kafka.annotation.KafkaListener;
 
 public class PostCreateListener {
 
-
-
 	@KafkaListener(
 			topics = "post-insert-topic",
 			groupId = "post-search-group-id",
-			concurrency = "3"
+			concurrency = "1"
 	)
 	public void postCreateListener(ConsumerRecord<String, String> record) {
 		record.value();

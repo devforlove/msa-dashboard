@@ -13,6 +13,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'com.mysql:mysql-connector-j'
     testImplementation 'com.h2database:h2'
+
+    implementation project(':dashboard-common')
+    implementation project(':core-web')
+    implementation project(':core-kafka')
 }
 
 bootJar {

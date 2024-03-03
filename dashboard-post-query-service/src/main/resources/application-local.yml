@@ -10,4 +10,12 @@ spring:
 
   data:
     mongodb:
-      uri: mongo:27017
+      host: localhost
+      port: 27017
+      database: playground
+      username: inwook.jung
+      password: wjddlsdnr12!
+
+feign:
+  url:
+    post-command: localhost:8072/post

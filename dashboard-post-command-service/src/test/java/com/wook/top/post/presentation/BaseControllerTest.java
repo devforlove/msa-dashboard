@@ -22,7 +22,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-@Import({MockServerConfig.class, MemberClientConfig.class, JwtAuthorizationFilter.class, JwtTokenProvider.class, TestSecurityConfig.class, EventConfig.class})
+@Import({MockServerConfig.class, MemberClientConfig.class, TestSecurityConfig.class, EventConfig.class})
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
