@@ -29,6 +29,7 @@ public class KafkaTemplateConfiguration {
 		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getBootstrapServers());
 		config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		config.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
 
 		return new DefaultKafkaProducerFactory<>(config);
 	}

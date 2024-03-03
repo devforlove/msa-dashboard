@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/member/v1")
 @RequiredArgsConstructor
-public class MemberCheckNicknameController {
+public class MemberCheckController {
 	private final NicknameCheckUseCase checkNicknameUseCase;
 
 	@GetMapping("/nickname/{nickname}")
