@@ -1,6 +1,5 @@
-package com.wook.top.postquery.query.repository;
+package com.wook.top.postquery.adapter.out.persistence;
 
-import com.wook.top.postquery.query.model.PostDetail;
 import org.springframework.data.repository.Repository;
 
 public class PostDetailRepository implements Repository<PostDetail, String> {

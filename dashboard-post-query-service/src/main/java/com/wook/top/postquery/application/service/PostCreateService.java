@@ -2,12 +2,16 @@ package com.wook.top.postquery.application.service;
 
 import com.wook.top.common.annotation.UseCase;
 import com.wook.top.postquery.application.port.in.PostCreateUseCase;
+import com.wook.top.postquery.application.port.in.PostEventDto;
+import lombok.RequiredArgsConstructor;
 
 @UseCase
+@RequiredArgsConstructor
 public class PostCreateService implements PostCreateUseCase {
 
+
 	@Override
-	public void createPost() {
+	public void createPost(PostEventDto dto) {
 
 	}
 }
