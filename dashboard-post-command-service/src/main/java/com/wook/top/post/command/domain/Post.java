@@ -2,7 +2,6 @@ package com.wook.top.post.command.domain;
 
 import com.wook.top.post.command.adapter.out.persistence.PostInsertEvent;
 import com.wook.top.post.command.adapter.out.persistence.PostUpdateEvent;
-import com.wook.top.post.command.domain.converter.PostLikeCountConverter;
 import com.wook.top.publishercore.Events;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
