@@ -10,8 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.wook.top.memberclient.client.MemberClient;
 import com.wook.top.memberclient.response.MemberCheckResponse;
 import com.wook.top.post.command.adapter.in.web.request.PostCreateRequest;
-import com.wook.top.post.command.domain.model.Post;
-import com.wook.top.post.command.domain.repository.PostRepository;
+import com.wook.top.post.command.domain.Post;
+import com.wook.top.post.command.adapter.out.persistence.PostRepository;
 import com.wook.top.post.presentation.BaseControllerTest;
 import java.util.List;
 import org.junit.jupiter.api.Test;

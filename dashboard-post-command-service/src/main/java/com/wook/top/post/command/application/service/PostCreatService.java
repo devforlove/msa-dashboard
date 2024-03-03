@@ -6,7 +6,7 @@ import com.wook.top.post.command.application.port.in.PostCreateInfo;
 import com.wook.top.post.command.application.port.in.PostCreateUseCase;
 import com.wook.top.post.command.application.port.out.MemberClientPort;
 import com.wook.top.post.command.application.port.out.PostCreatePort;
-import com.wook.top.post.command.domain.model.Post;
+import com.wook.top.post.command.domain.Post;
 import com.wook.top.webcore.error.ErrorCode;
 import com.wook.top.webcore.error.exception.BusinessException;
 import lombok.RequiredArgsConstructor;

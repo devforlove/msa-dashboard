@@ -1,4 +1,4 @@
-package com.wook.top.post.command.domain.model;
+package com.wook.top.post.command.domain;
 
 import com.wook.top.publishercore.event.InternalEvent;
 import jakarta.persistence.Entity;

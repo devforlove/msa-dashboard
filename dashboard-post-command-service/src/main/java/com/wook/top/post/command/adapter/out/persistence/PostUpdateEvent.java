@@ -1,6 +1,6 @@
-package com.wook.top.post.command.domain.event;
+package com.wook.top.post.command.adapter.out.persistence;
 
-import com.wook.top.post.command.domain.model.Post;
+import com.wook.top.post.command.domain.Post;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

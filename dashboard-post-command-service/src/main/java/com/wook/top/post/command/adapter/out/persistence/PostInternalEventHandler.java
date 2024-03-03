@@ -3,7 +3,7 @@ package com.wook.top.post.command.adapter.out.persistence;
 import com.wook.top.kafkapublisher.post.event.PostEvent;
 import com.wook.top.kafkapublisher.post.type.PostEventType;
 import com.wook.top.post.command.application.port.out.PostInsertEventPublishPort;
-import com.wook.top.post.command.domain.model.InternalPostEvent;
+import com.wook.top.post.command.domain.InternalPostEvent;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

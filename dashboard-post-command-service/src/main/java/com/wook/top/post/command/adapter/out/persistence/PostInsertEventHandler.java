@@ -1,10 +1,8 @@
-package com.wook.top.post.command.domain.event.handler;
+package com.wook.top.post.command.adapter.out.persistence;
 
-import com.wook.top.post.command.domain.event.PostInsertEvent;
-import com.wook.top.post.command.domain.model.InternalPostEvent;
-import com.wook.top.post.command.domain.model.Post;
-import com.wook.top.post.command.domain.model.PostEventType;
-import com.wook.top.post.command.domain.repository.PostEventRepository;
+import com.wook.top.post.command.domain.InternalPostEvent;
+import com.wook.top.post.command.domain.Post;
+import com.wook.top.post.command.domain.PostEventType;
 import com.wook.top.publishercore.Events;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

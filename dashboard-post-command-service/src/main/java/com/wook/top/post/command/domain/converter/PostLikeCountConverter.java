@@ -1,6 +1,6 @@
-package com.wook.top.post.command.domain.model.converter;
+package com.wook.top.post.command.domain.converter;
 
-import com.wook.top.post.command.domain.model.LikeCount;
+import com.wook.top.post.command.domain.LikeCount;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

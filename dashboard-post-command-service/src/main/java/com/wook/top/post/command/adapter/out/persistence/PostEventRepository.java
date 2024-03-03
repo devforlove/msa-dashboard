@@ -1,6 +1,6 @@
-package com.wook.top.post.command.domain.repository;
+package com.wook.top.post.command.adapter.out.persistence;
 
-import com.wook.top.post.command.domain.model.InternalPostEvent;
+import com.wook.top.post.command.domain.InternalPostEvent;
 import org.springframework.data.repository.Repository;
 
 public interface PostEventRepository extends Repository<InternalPostEvent, Long> {

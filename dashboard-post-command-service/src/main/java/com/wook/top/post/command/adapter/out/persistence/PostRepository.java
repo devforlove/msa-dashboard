@@ -1,6 +1,6 @@
-package com.wook.top.post.command.domain.repository;
+package com.wook.top.post.command.adapter.out.persistence;
 
-import com.wook.top.post.command.domain.model.Post;
+import com.wook.top.post.command.domain.Post;
 import java.util.List;
 import org.springframework.data.repository.Repository;
 
