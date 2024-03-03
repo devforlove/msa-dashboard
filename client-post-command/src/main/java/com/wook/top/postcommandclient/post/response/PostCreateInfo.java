@@ -1,5 +1,5 @@
 package com.wook.top.postcommandclient.post.response;
 
-public class PostCreateInfo {
+public record PostCreateInfo() {
 
 }
