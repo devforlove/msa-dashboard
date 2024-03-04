@@ -1,9 +1,0 @@
-bootJar.enabled = false
-jar.enabled = true
-
-group = 'com.wook.top.kafkaproducer'
-version = '0.0.1'
-
-dependencies {
-    api 'org.springframework.kafka:spring-kafka'
-}

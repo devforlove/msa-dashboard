@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import com.wook.top.memberclient.client.MemberClient;
 import com.wook.top.memberclient.response.MemberCheckResponse;
+import com.wook.top.post.command.adapter.out.service.MemberClientAdapter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

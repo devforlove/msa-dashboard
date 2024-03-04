@@ -26,7 +26,7 @@ public class SecurityConfig {
 
 		return http
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/member/**").permitAll()
+						.requestMatchers("/member/v1/**").permitAll()
 						.requestMatchers("/member/v1/me").hasRole("MEMBER")
 						.anyRequest().authenticated()
 				)

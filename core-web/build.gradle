@@ -1,3 +1,7 @@
+plugins {
+    id 'java-test-fixtures'
+}
+
 bootJar.enabled = false
 jar.enabled = true
 
@@ -6,20 +10,18 @@ version = '0.0.1'
 
 dependencies {
     // web
-    api 'org.springframework.boot:spring-boot-starter-web'
-    api 'org.springframework.boot:spring-boot-starter-validation'
-    api 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // security
     testImplementation 'org.springframework.security:spring-security-test'
 
     // jwt
-    api group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
 
-    // swagger
-    api 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
 }
 
 test {

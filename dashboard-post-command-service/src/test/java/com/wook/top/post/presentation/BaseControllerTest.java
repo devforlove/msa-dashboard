@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wook.top.post.config.TestSecurityConfig;
+import com.wook.top.publishercore.config.EventConfig;
 import com.wook.top.webcore.member.Role;
 import com.wook.top.webcore.security.JwtAuthorizationFilter;
 import com.wook.top.webcore.security.JwtTokenProvider;
@@ -12,21 +13,16 @@ import com.wook.top.webcore.security.SecurityUser;
 import config.MemberClientConfig;
 import config.MockServerConfig;
 import java.util.Set;
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
-import org.springframework.test.context.event.annotation.BeforeTestExecution;
-import org.springframework.test.context.event.annotation.BeforeTestMethod;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-@Import({MockServerConfig.class, MemberClientConfig.class, JwtAuthorizationFilter.class, JwtTokenProvider.class, TestSecurityConfig.class})
+@Import({MockServerConfig.class, MemberClientConfig.class, TestSecurityConfig.class, EventConfig.class})
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc

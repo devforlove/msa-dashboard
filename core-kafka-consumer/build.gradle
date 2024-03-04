@@ -1,9 +1,0 @@
-bootJar.enabled = false
-jar.enabled = true
-
-group = 'com.wook.top.kafkaconsumer'
-version = '1.0.0'
-
-dependencies {
-    implementation 'org.springframework.kafka:spring-kafka'
-}

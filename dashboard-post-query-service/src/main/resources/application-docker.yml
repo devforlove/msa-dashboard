@@ -10,4 +10,8 @@ spring:
 
   data:
     mongodb:
-      uri: mongo:27017
+      uri: mongodb:27017
+
+feign:
+  url:
+    post-command: dashboard-post-command-service:8062/member
