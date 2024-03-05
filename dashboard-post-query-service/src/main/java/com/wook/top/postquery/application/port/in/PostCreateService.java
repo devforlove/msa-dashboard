@@ -1,6 +1,6 @@
 package com.wook.top.postquery.application.port.in;
 
-public interface PostCreateUseCase {
+public interface PostCreateService {
 
 	void createPost(PostEventDto dto);
 }

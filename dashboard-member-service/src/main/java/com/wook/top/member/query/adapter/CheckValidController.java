@@ -1,7 +1,7 @@
 package com.wook.top.member.query.adapter;
 
 import com.wook.top.common.annotation.WebAdapter;
-import com.wook.top.memberclient.response.MemberCheckResponse;
+import com.wook.top.memberclient.client.response.MemberCheckResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

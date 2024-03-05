@@ -1,15 +1,14 @@
-package com.wook.top.postcommandclient.post;
+package com.wook.top.postcommandclient.client;
 
-import com.wook.top.postcommandclient.post.PostClient;
-import com.wook.top.postcommandclient.post.response.PostCreateInfo;
+import com.wook.top.postcommandclient.client.response.PostCreateInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class PostClientWrapper {
+public class PostInfoClientWrapper {
 
-	private final PostClient postClient;
+	private final PostInfoClient postClient;
 
 	public PostCreateInfo getPostCreateInfo(long postId) {
 		return postClient.getPostInfo(postId).getBody();

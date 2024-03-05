@@ -1,16 +1,16 @@
 package com.wook.top.memberclient.client;
 
-import com.wook.top.memberclient.config.FeignConfig;
-import com.wook.top.memberclient.response.MemberCheckResponse;
+import com.wook.top.memberclient.config.MemberFeignConfig;
+import com.wook.top.memberclient.client.response.MemberCheckResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-		name = "demo-client",
-		url = "${feign.url.member-service}",
-		configuration = FeignConfig.class
+		name = "memberClient",
+		url = "${feign.url.member-service:default}",
+		configuration = MemberFeignConfig.class
 )
 public interface MemberClient {
 

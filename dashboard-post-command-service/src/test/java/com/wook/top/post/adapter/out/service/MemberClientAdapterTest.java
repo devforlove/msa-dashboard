@@ -5,7 +5,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 import com.wook.top.memberclient.client.MemberClient;
-import com.wook.top.memberclient.response.MemberCheckResponse;
+import com.wook.top.memberclient.client.response.MemberCheckResponse;
 import com.wook.top.post.command.adapter.out.service.MemberClientAdapter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

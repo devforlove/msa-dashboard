@@ -18,4 +18,4 @@ spring:
 
 feign:
   url:
-    post-command: localhost:8072/post
+    post-command: localhost:8073/post

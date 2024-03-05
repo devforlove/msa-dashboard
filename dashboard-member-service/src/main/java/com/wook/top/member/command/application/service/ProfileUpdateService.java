@@ -6,10 +6,8 @@ import com.wook.top.member.command.application.port.in.ProfileUpdateInfo;
 import com.wook.top.member.command.application.port.in.ProfileUpdateUseCase;
 import com.wook.top.member.command.application.port.out.ProfileUpdatePort;
 import com.wook.top.member.command.domain.model.Member;
-import com.wook.top.member.command.domain.repository.MemberRepository;
-import com.wook.top.member.common.exception.EntityNotFoundException;
+import com.wook.top.member.exception.EntityNotFoundException;
 import com.wook.top.webcore.error.ErrorCode;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 

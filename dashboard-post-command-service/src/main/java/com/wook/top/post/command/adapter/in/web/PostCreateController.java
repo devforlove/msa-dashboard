@@ -1,9 +1,7 @@
 package com.wook.top.post.command.adapter.in.web;
 
 import com.wook.top.common.annotation.WebAdapter;
-import com.wook.top.post.command.adapter.in.web.request.PostCreateRequest;
 import com.wook.top.post.command.application.port.in.PostCreateCommand;
-import com.wook.top.post.command.application.port.in.PostCreateInfo;
 import com.wook.top.post.command.application.port.in.PostCreateUseCase;
 import com.wook.top.webcore.security.SecurityUser;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +22,9 @@ public class PostCreateController {
 	private final PostCreateUseCase postCreateUseCase;
 
 	@PostMapping("/post/me")
-	public ResponseEntity<PostCreateInfo> createPost(@RequestBody PostCreateRequest request, @AuthenticationPrincipal SecurityUser securityUser) {
+	public ResponseEntity<PostCreateResponse> createPost(@RequestBody PostCreateRequest request, @AuthenticationPrincipal SecurityUser securityUser) {
 
-		PostCreateCommand command = new PostCreateCommand(securityUser.getMemberId(), request.title(), request.content());
+		final PostCreateCommand command = new PostCreateCommand(securityUser.getMemberId(), request.title(), request.content());
 		return new ResponseEntity<>(postCreateUseCase.createPost(command), HttpStatus.CREATED);
 	}
 }

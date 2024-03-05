@@ -8,6 +8,17 @@ public class PostDetail {
 
 	@Id
 	private String id;
-	private String name;
-	private int age;
+	private Long writerId;
+	private String content;
+	private String title;
+
+	private PostDetail(Long writerId, String content, String title) {
+		this.writerId = writerId;
+		this.content = content;
+		this.title = title;
+	}
+
+	public static PostDetail of(Long writerId, String content, String title) {
+		return new PostDetail(writerId, content, title);
+	}
 }

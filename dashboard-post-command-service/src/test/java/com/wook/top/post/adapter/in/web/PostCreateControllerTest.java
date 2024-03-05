@@ -8,8 +8,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.wook.top.memberclient.client.MemberClient;
-import com.wook.top.memberclient.response.MemberCheckResponse;
-import com.wook.top.post.command.adapter.in.web.request.PostCreateRequest;
+import com.wook.top.memberclient.client.response.MemberCheckResponse;
+import com.wook.top.post.command.adapter.in.web.PostCreateRequest;
 import com.wook.top.post.command.domain.Post;
 import com.wook.top.post.command.adapter.out.persistence.PostRepository;
 import com.wook.top.post.presentation.BaseControllerTest;

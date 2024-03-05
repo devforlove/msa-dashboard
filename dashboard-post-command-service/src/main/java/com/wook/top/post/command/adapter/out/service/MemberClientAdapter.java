@@ -2,7 +2,7 @@ package com.wook.top.post.command.adapter.out.service;
 
 import com.wook.top.common.annotation.ExternalSystemAdapter;
 import com.wook.top.memberclient.client.MemberClient;
-import com.wook.top.memberclient.response.MemberCheckResponse;
+import com.wook.top.memberclient.client.response.MemberCheckResponse;
 import com.wook.top.post.command.application.port.out.MemberClientPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

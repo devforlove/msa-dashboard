@@ -1,4 +1,4 @@
-package com.wook.top.member.common.exception;
+package com.wook.top.member.exception;
 
 import com.wook.top.webcore.error.ErrorCode;
 import com.wook.top.webcore.error.exception.BusinessException;

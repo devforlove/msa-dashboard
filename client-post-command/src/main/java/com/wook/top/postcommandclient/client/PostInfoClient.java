@@ -1,18 +1,18 @@
-package com.wook.top.postcommandclient.post;
+package com.wook.top.postcommandclient.client;
 
-import com.wook.top.postcommandclient.config.FeignConfig;
-import com.wook.top.postcommandclient.post.response.PostCreateInfo;
+import com.wook.top.postcommandclient.config.PostCommandFeignConfig;
+import com.wook.top.postcommandclient.client.response.PostCreateInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-		name = "demo-client",
-		url = "${feign.url.post-command}",
-		configuration = FeignConfig.class
+		name = "postCommandClient",
+		url = "${feign.url.post-command:default}",
+		configuration = PostCommandFeignConfig.class
 )
-public interface PostClient {
+public interface PostInfoClient {
 
 	@GetMapping("/v1/post/{postId}/info/create")
 	ResponseEntity<PostCreateInfo> getPostInfo(

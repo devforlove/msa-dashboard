@@ -23,6 +23,7 @@ dependencies {
     implementation project(":dashboard-common")
     implementation project(":core-web")
     implementation project(":client-member")
+    implementation project(":client-post-command")
 
     testImplementation 'com.h2database:h2'
     testImplementation 'org.springframework.security:spring-security-test'
