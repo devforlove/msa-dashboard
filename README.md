@@ -8,19 +8,55 @@
 front 서비스를 제외한 모든 서비스는 기본적으로 Hexagonal Architecture로 구현하고, 일부 서비스에서는
 Event Sourcing, CQRS, Saga Pattern 등이 적용되어 있습니다. 
 
-## Overall Architecture for Monolithic System
-![img.png](img.png)
-## member-service
-고객의 회원 가입, 회원 정보 변경, 회원 정보 조회 등의 기능을 제공하는 서비스입니다. 뿐만 아니라 회원 서비스에서 멤버에 대한 인증, 인가 기능도 제공하고 있습니다.
-### 주요 로직
-- front service에서 멤버에 대한 회원가입, 로그인에 대한 요청을 처리합니다. 
-- 멤버 정보가 변경되면 review-query, post-query 서비스와 싱크를 맞추기 위해서 멤버의 id를 메세지 큐에 넣습니다. 그리고 다른 서비스는 메세지의 큐의 id로 멤버 서비스에 변경된 멤버 데이터에 대해 요청합니다.
-### API list
-- existDuplicatedEmail: 멤버의 중복 이메일 체크
+## 패키지 구조 
+## 📦 패키지
 
-### post-command-service
-### post-query-service
-### post-search-service
-### review-command-service
-### review-query-service
-### message-service
+패키지 구조는 DDD(Domain-Driven-Design)의 바운디드 컨텍스트를 기반으로 합니다. CQRS 패턴을 사용하여 command(명령)용 패키지와 query(조회)용 패키지를 분리하였습니다. 
+
+```
++- config
+|  +- SecurityConfig
+|  +- PersistenceConfig
+|  +- SwaggerConfig
++- command
+    +- adapter
+        +- out
+            +- kafka
+            |  +- PostInsertEventPublishAdapter
+            +- persistence
+            |  +- PostCreateAdapter
+            |  +- PostInsertEventHandler
+            ...
+            +- service
+            |  +- MemberClientAdapter
+        +- in
+            +- web
+            |  +- PostCreateRequest
+            |  +- PostCreateController
+            |  +- PostCreateResponse
+    +- application
+        +- service
+        |  +- PostCreatService
+        +- port
+            +- out
+            |  +- PostCreatePort
+            |  +- MemberClientPort
+            |  +- PostInsertEventPublishPort
+            +- in
+            |  +- PostCreateUseCase
+            |  +- PostCreateCommand
+    +- domain
+    |  +- Post
+    |  +- InternalPostEvent
+    |  +- LikeCount
+    |  +- PostLikeCountConverter
+    |  +- PostEventType
++- query
+    +- dto
+    |  +- PostData
+    +- dao
+    |  +- PostDataDao
+    +- adapter
+    |  +- PostCreateInfoController
+```
+
