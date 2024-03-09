@@ -1,12 +1,10 @@
 # msa-dashboard
 
 간단한 게시판 서비스를 MSA로 구축해보는 멀티모듈 프로젝트입니다. 
-회원(member), 게시판 등록(post-command), 게시판 조회(post-query),
-게시판 검색(post-search), 리뷰 등록(review-command), 리뷰 조회(review-query),
-메세지(message), 화면(front) 이렇게 총 8개의 서비스로 구성되어 있으며, 각각의 독립적인 프로젝트로 구성되어 있습니다.
+회원(member), 게시판 등록(post-command), 리뷰 등록(review-command), 게시판/리뷰 조회(review-query), 메세지(message) 이렇게 총 5개의 서비스로 구성되어 있으며, 각각의 독립적인 프로젝트로 구성되어 있습니다.
 
-front 서비스를 제외한 모든 서비스는 기본적으로 Hexagonal Architecture로 구현하고, 일부 서비스에서는
-Event Sourcing, CQRS, Saga Pattern 등이 적용되어 있습니다. 
+모든 서비스는 기본적으로 Hexagonal Architecture로 구현하고, 일부 서비스에서는
+Event Sourcing, CQRS 패턴이 적용되어 있습니다. 
 
 ## 패키지 구조 
 ## 📦 패키지
