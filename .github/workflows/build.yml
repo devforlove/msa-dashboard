@@ -6,6 +6,14 @@ on:
         description: "`x.y.z-backend.NN` 형태로 버전을 입력해주세요. (ex. 0.1.0-backend.05)"
         required: true
         default: 0.0.1-backend.00
+      name:
+        type: 배포 서비스
+        description: 배포할 서비스를 선택해주세요
+        required: true
+        options:
+          - member
+          - post-command
+          - post-query
 env:
   TAG: ${{ github.event.inputs.tag }}
   SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
