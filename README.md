@@ -12,49 +12,51 @@ Event Sourcing, CQRS 패턴이 적용되어 있습니다.
 패키지 구조는 DDD(Domain-Driven-Design)의 바운디드 컨텍스트를 기반으로 합니다. CQRS 패턴을 사용하여 command(명령)용 패키지와 query(조회)용 패키지를 분리하였습니다. 
 
 ```
-+- config
-|  +- SecurityConfig
-|  +- PersistenceConfig
-|  +- SwaggerConfig
-+- command
-    +- adapter
-        +- out
-            +- kafka
-            |  +- PostInsertEventPublishAdapter
-            +- persistence
-            |  +- PostCreateAdapter
-            |  +- PostInsertEventHandler
-            ...
-            +- service
-            |  +- MemberClientAdapter
-        +- in
-            +- web
-            |  +- PostCreateRequest
-            |  +- PostCreateController
-            |  +- PostCreateResponse
-    +- application
-        +- service
-        |  +- PostCreatService
-        +- port
-            +- out
-            |  +- PostCreatePort
-            |  +- MemberClientPort
-            |  +- PostInsertEventPublishPort
-            +- in
-            |  +- PostCreateUseCase
-            |  +- PostCreateCommand
-    +- domain
-    |  +- Post
-    |  +- InternalPostEvent
-    |  +- LikeCount
-    |  +- PostLikeCountConverter
-    |  +- PostEventType
-+- query
-    +- dto
-    |  +- PostData
-    +- dao
-    |  +- PostDataDao
-    +- adapter
-    |  +- PostCreateInfoController
+com.wook.top
+    +- post
+        +- config
+        |  +- SecurityConfig
+        |  +- PersistenceConfig
+        |  +- SwaggerConfig
+        +- command
+            +- adapter
+                +- out
+                    +- kafka
+                    |  +- PostInsertEventPublishAdapter
+                    +- persistence
+                    |  +- PostCreateAdapter
+                    |  +- PostInsertEventHandler
+                    ...
+                    +- service
+                    |  +- MemberClientAdapter
+                +- in
+                    +- web
+                    |  +- PostCreateRequest
+                    |  +- PostCreateController
+                    |  +- PostCreateResponse
+            +- application
+                +- service
+                |  +- PostCreatService
+                +- port
+                    +- out
+                    |  +- PostCreatePort
+                    |  +- MemberClientPort
+                    |  +- PostInsertEventPublishPort
+                    +- in
+                    |  +- PostCreateUseCase
+                    |  +- PostCreateCommand
+            +- domain
+            |  +- Post
+            |  +- InternalPostEvent
+            |  +- LikeCount
+            |  +- PostLikeCountConverter
+            |  +- PostEventType
+        +- query
+            +- dto
+            |  +- PostData
+            +- dao
+            |  +- PostDataDao
+            +- adapter
+            |  +- PostCreateInfoController
 ```
 
