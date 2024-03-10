@@ -17,7 +17,10 @@ on:
           - post-query
 env:
   TAG: ${{ github.event.inputs.tag }}
-  SERVICE: ${{ github.event.inputs.service }}
+  SERVICE: |
+    ${{ 'github.event.inputs.service' == 'member' }} => dashboard-member-service
+    ${{ 'github.event.inputs.service' == 'post-command' }} => dashboard-post-command-service
+    ${{ 'github.event.inputs.service' == 'post-query' }} => dashboard-post-query-service
   SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
   BACKEND_ECR_REPOSITORY: ${{ secrets.BACKEND_ECR_REPOSITORY }}
   BUILD_PATH: "~/backend-build-tmp"
