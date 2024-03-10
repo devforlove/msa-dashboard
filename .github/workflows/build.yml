@@ -12,15 +12,12 @@ on:
         required: true
         default: ''
         options:
-          - member
-          - post-command
-          - post-query
+          - dashboard-member-service
+          - dashboard-post-command-service
+          - dashboard-post-query-service
 env:
   TAG: ${{ github.event.inputs.tag }}
-  SERVICE: |
-    ${{ 'github.event.inputs.service' == 'member' }} => dashboard-member-service
-    ${{ 'github.event.inputs.service' == 'post-command' }} => dashboard-post-command-service
-    ${{ 'github.event.inputs.service' == 'post-query' }} => dashboard-post-query-service
+  SERVICE: ${{ github.event.inputs.service }}
   SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
   BACKEND_ECR_REPOSITORY: ${{ secrets.BACKEND_ECR_REPOSITORY }}
   BUILD_PATH: "~/backend-build-tmp"
@@ -63,8 +60,7 @@ jobs:
       - name: Build Java Sample Code
         run: |
           mkdir -p $BUILD_PATH
-          ${{ env.SERVICE }}
-          ./gradlew :dashboard-member-service:build -x test 
+          ./gradlew :${{ env.SERVICE }}:build -x test 
           cp -rf build/libs/* $BUILD_PATH/
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
