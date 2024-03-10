@@ -13,9 +13,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    implementation 'com.mysql:mysql-connector-j'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     // swagger
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
+
+    // security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // queryDSL 설정
     implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
@@ -25,10 +28,11 @@ dependencies {
     annotationProcessor 'jakarta.annotation:jakarta.annotation-api' // java.lang.NoClassDefFoundError (javax.annotation.Generated) 대응 코드
     annotationProcessor 'jakarta.persistence:jakarta.persistence-api' // java.lang.NoClassDefFoundError (javax.annotation.Entity) 대응 코드
 
-    implementation project(":dashboard-common")
-    implementation project(":core-web")
-    implementation project(":client-member")
-    testImplementation 'com.h2database:h2'
+    implementation(project(":dashboard-common"))
+    implementation(project(":core-web"))
+    implementation(project(":client-member"))
+    testCompileOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation(testFixtures(project(":core-web")))
 }
 
