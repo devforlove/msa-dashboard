@@ -74,7 +74,7 @@ jobs:
           BACKEND_ECR_REPOSITORY: ${{ env.BACKEND_ECR_REPOSITORY }}
           IMAGE_TAG: ${{ env.TAG }}
         run: |
-          docker build -t $BACKEND_ECR_REPOSITORY:$IMAGE_TAG $BUILD_PATH/
+          docker build -t $BACKEND_ECR_REPOSITORY:$IMAGE_TAG ${{ env.SERVICE }}
       - id: login-ecr
         name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
