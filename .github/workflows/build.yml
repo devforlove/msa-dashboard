@@ -95,8 +95,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Update Kubernetes resources
         run: |
-          cd kubernetes/{{env.SERVICE}}/gitops
-          kustomize edit set image {{env.SERVICE}}-image=${{ env.BACKEND_ECR_REPOSITORY }}:${{ env.TAG }}
+          cd kubernetes/member/gitops
+          kustomize edit set image member-image=${{ env.BACKEND_ECR_REPOSITORY }}:${{ env.TAG }}
       - name: Commit & Push Image
         uses: actions-js/push@master
         with:
