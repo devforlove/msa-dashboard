@@ -12,16 +12,12 @@ on:
         required: true
         default: ''
         options:
-          - dashboard-member-service
-          - dashboard-post-command-service
-          - dashboard-post-query-service
+          - member
+          - post-command
+          - post-query
 env:
   TAG: ${{ github.event.inputs.tag }}
   SERVICE: ${{ github.event.inputs.service }}
-  SVC: |
-    ${{ 'github.event.inputs.service' == 'dashboard-member-service' }} => member
-    ${{ 'github.event.inputs.service' == 'dashboard-post-command-service' }} => postCommand
-    ${{ 'github.event.inputs.service' == 'dashboard-post-query-service' }} => postQuery
   SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
   BACKEND_ECR_REPOSITORY: ${{ secrets.BACKEND_ECR_REPOSITORY }}
   BUILD_PATH: "~/backend-build-tmp"
@@ -64,8 +60,8 @@ jobs:
       - name: Build Java Sample Code
         run: |
           mkdir -p $BUILD_PATH
-          ./gradlew :${{ env.SERVICE }}:build -x test 
-          cp -rf ${{ env.SERVICE }}/build/libs/* $BUILD_PATH/
+          ./gradlew :dashboard-${{ env.SERVICE }}-service:build -x test 
+          cp -rf dashboard-${{ env.SERVICE }}-service/build/libs/* $BUILD_PATH/
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -78,7 +74,7 @@ jobs:
           BACKEND_ECR_REPOSITORY: ${{ env.BACKEND_ECR_REPOSITORY }}
           IMAGE_TAG: ${{ env.TAG }}
         run: |
-          docker build -t $BACKEND_ECR_REPOSITORY:$IMAGE_TAG ${{ env.SERVICE }}
+          docker build -t $BACKEND_ECR_REPOSITORY:$IMAGE_TAG dashboard-${{ env.SERVICE }}-service
       - id: login-ecr
         name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
@@ -99,9 +95,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Update Kubernetes resources
         run: |
-          echo {{env.SVC}}
-          cd kubernetes/member/gitops
-          kustomize edit set image {{ env.SERVICE}}-image=${{ env.BACKEND_ECR_REPOSITORY }}:${{ env.TAG }}
+          cd kubernetes/{{env.SERVICE}}/gitops
+          kustomize edit set image {{env.SERVICE}}-image=${{ env.BACKEND_ECR_REPOSITORY }}:${{ env.TAG }}
       - name: Commit & Push Image
         uses: actions-js/push@master
         with:
