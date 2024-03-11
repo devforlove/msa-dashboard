@@ -60,3 +60,5 @@ com.wook.top
             |  +- PostCreateInfoController
 ```
 
+## ♻ 배포
+<img src="./docs/project-architecture/cicd.png" style="border:1px solid black; border-radius: 12px;" width="100%"/>
