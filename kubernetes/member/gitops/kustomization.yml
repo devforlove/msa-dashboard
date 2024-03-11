@@ -5,7 +5,7 @@ patchesStrategicMerge:
 resources:
   - ../base
 images:
-  - name: dashboard-member-service-image
+  - name: member-image
     newName: 457516223683.dkr.ecr.ap-northeast-2.amazonaws.com/dashboard
     newTag: 0.0.1-backend.14
 namespace: member
