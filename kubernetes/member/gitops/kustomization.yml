@@ -1,11 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 patchesStrategicMerge:
-  - deployment.yml
+- deployment.yml
 resources:
-  - ../base
+- ../base
 images:
-  - name: member-image
-    newName: 457516223683.dkr.ecr.ap-northeast-2.amazonaws.com/dashboard
-    newTag: 0.0.1-backend.14
+- name: member-image
+  newName: 457516223683.dkr.ecr.ap-northeast-2.amazonaws.com/dashboard
+  newTag: 0.0.1-backend.20
 namespace: member
