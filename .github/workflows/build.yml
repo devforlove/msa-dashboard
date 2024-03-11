@@ -85,3 +85,21 @@ jobs:
           IMAGE_TAG: ${{ env.TAG }}
         run: |
           docker push $BACKEND_ECR_REPOSITORY:$IMAGE_TAG
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+      - name: Checkout kustomize repository
+        uses: actions/checkout@v3
+      - name: Update Kubernetes resources
+        run: |
+          cd kubernetes/{{ env.SERVICE }}/gitops
+          kustomize edit set image {{ env.SERVICE}}-image=${{ env.BACKEND_ECR_REPOSITORY }}:${{ env.TAG }}
+      - name: Commit & Push Image
+        uses: actions-js/push@master
+        with:
+          message: '[DEPLOY] Update Image ${{ env.BACKEND_ECR_REPOSITORY }}:${{ env.TAG }}'
+          branch: master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
